@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 配置数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/xhtutor" userId="xhtutor"
+			password="Xh123,.?">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 指定javaBean生成的位置 -->
+		<javaModelGenerator targetPackage="com.xhtutor.tutor.bean"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--指定sql映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 指定dao接口生成的位置，mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.xhtutor.tutor.dao" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+		<!-- table指定每个表的生成策略 -->
+		<table tableName="t_admin" domainObjectName="Admin"></table>
+		<!-- <table tableName="t_tutor" domainObjectName="Tutor"></table>
+		<table tableName="t_forte" domainObjectName="Forte"></table>
+		<table tableName="t_order" domainObjectName="Order"></table>
+		<table tableName="t_student" domainObjectName="Student"></table>
+		<table tableName="t_province" domainObjectName="Province"></table>
+		<table tableName="t_city" domainObjectName="City"></table>
+		<table tableName="t_district" domainObjectName="District"></table>
+		<table tableName="t_subject" domainObjectName="Subject"></table>
+		<table tableName="t_grade" domainObjectName="Grade"></table>
+		<table tableName="t_university" domainObjectName="University"></table>
+		<table tableName="t_mode" domainObjectName="Mode"></table> -->
+		
+		<!-- <table tableName="t_tutor_order" domainObjectName="TutorOrder"></table>
+		<table tableName="t_tutor_subject" domainObjectName="TutorSubject"></table>
+		<table tableName="t_tutor_grade" domainObjectName="TutorGrade"></table>
+		<table tableName="t_tutor_distr" domainObjectName="TutorDistr"></table>
+		<table tableName="t_tutor_mode" domainObjectName="TutorMode"></table>
+		<table tableName="t_stu_tutor" domainObjectName="StuTutor"></table> -->
+		
+	</context>
+</generatorConfiguration>

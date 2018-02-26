@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	
+		<!--#include file="head.html" -->
+	
+	</head>
+	<body>
+	  	<div class="container">
+	  		
+	  		<!--#include file="top-row.html" -->
+	   		
+			<!-- 导航栏 -->
+			<nav id="nav" class="row hidden-xs">
+				<ul class="nav nav-justified">
+					<li><a href="index.html">首页</a></li>
+					<li class="active"><a href="tutors.html">优秀家教</a></li>
+					<li><a href="shome.html">请家教</a></li>
+					<li><a href="students.html">学员库</a></li>
+					<li><a href="thome.html">做家教</a></li>
+					<li><a href="aboutus.html">关于我们</a></li>
+				</ul>
+			</nav>
+			
+			<div class="row">
+				<div id="tutors-slogan" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-info">
+					<h1>挑选最适合自己的老师！<small>----小禾家教</small></h1>
+				</div>
+			</div>
+			<div id="tutors-tutor-filters">
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>科目：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="tutors-subject-filter" class="list-inline">
+							<!-- <li class="active">不限</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>年级：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="tutors-grade-filter" class="list-inline">
+							<!-- <li class="active">不限</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>地区：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="tutors-distr-filter" class="list-inline">
+							<!-- <li class="active">不限</li> -->
+						</ul>
+						<div id="tutors-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>方式：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="tutors-mode-filter" class="list-inline">
+							<li class="active" mode-id="">不限</li>
+							<li mode-id="1">老师上门</li>
+							<li mode-id="2">学生上门</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>类型：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="tutors-type-filter" class="list-inline">
+							<li class="active" tutor-type="">不限</li>
+							<li tutor-type='1'>在校大学生</li>
+							<li tutor-type='2'>大学毕业生</li>
+							<li tutor-type='3'>优秀教师</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>性别：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="tutors-gender-filter" class="list-inline">
+							<li class="active" gender="">不限</li>
+							<li gender="m">男</li>
+							<li gender="f">女</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div id="tutors-tutor-list" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<div class="row">
+						<div id="tutors-list-title" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding-r">
+							<p>
+								<span id="tutors-list-title-text">优秀家教</span>
+								<span id="tutors-list-title-icons">
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user name-icon"></span>&nbsp;实名认证
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-education degree-icon"></span>&nbsp;学历认证
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-book college-icon"></span>&nbsp;学生认证
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-check teacher-icon"></span>&nbsp;教师认证
+								</span>
+							</p>
+						</div>
+					</div>
+					
+					<div id="tutors-list-wrap">
+						<!-- <div class="row tutors-tutor-item">
+							<div class="col-lg-2 no-padding-r tutor-photo">
+								<a href="#">
+							    	<img class="img-responsive img-rounded center-block" src="http://oss.xhtutor.com/static/images/photo200.png" alt="photo">
+						  		</a>
+							</div>
+							<div class="col-lg-10">
+								<div class="row">
+									<div class="col-lg-8">
+										<p>
+											<span class="tutor-name">崔教员</span>
+											<span>
+												&nbsp;&nbsp;&nbsp;&nbsp;男&nbsp;<span class="glyphicon glyphicon-user name-icon"></span>
+												&nbsp;&nbsp;&nbsp;&nbsp;专业教师&nbsp;<span class="glyphicon glyphicon-check teacher-icon"></span>
+												&nbsp;&nbsp;&nbsp;&nbsp;长安大学&nbsp;<span class="glyphicon glyphicon-education degree-icon"></span>
+											</span>
+										</p>
+									</div>
+									<div class="col-lg-4">
+								    	<button class="btn btn-info btn-sm">意向</button>
+								    	<button class="btn btn-info btn-sm">详情</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+										<p><strong>科目：</strong>数学 英语 数学 英语 数学 英语 数学 英语</p>
+									</div>
+									<div class="col-lg-6">
+								    	<p><strong>地区：</strong>京口区 句容市 西湖区 京口区 句容市 西湖区 京口区 句容市 西湖区</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+								    	<p><strong>年级：</strong>三年级 五年级 六年级 三年级 五年级 六年级 三年级 五年级 六年级</p>
+									</div>
+									<div class="col-lg-6">
+								    	<p><strong>方式：</strong>教员上门 学生上门</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+								    	<p><strong>自我描述：</strong>毕业于长安大学（211重点大学），本科是工科材料专业。数学和物理成绩一直非常优秀，教学生认真负责，有耐心。</p>
+									</div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+					
+					
+					<!-- 分页 -->
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<nav id="tutors-tutor-pager" aria-label="Page navigation">
+								<ul class="pagination">
+									<li class="available first-page-hide"><span id="tutors-page-first">首页</span></li>
+									<li class="available first-page-hide"><span id="tutors-page-previous">上一页</span></li>
+									<li class="disabled first-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+									<li class="active"><span id="tutors-page-num"></span></li>
+									<li class="disabled last-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+									<li class="available last-page-hide"><span id="tutors-page-next">下一页</span></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					
+				</div>
+				
+				<!-- 快速发布家教信息 -->
+				<!--#include file="order-panel.html" -->
+				
+			</div>
+			
+			<!--#include file="footer.html" -->
+			
+	   	</div>
+	   	
+	   	<!-- order发布成功提示Modal -->
+	   	<!--#include file="order-success-modal.html" -->
+	   	
+	   	<!-- 登录Modal -->
+		<!--#include file="tutor-login-modal.html" -->
+		
+		<!-- 通用提示Modal -->
+		<!--#include file="common-hint-modal.html" -->
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://oss.xhtutor.com/static/js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="http://oss.xhtutor.com/static/js/bootstrap.min.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/common.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/tutors.js"></script>
+	</body>
+</html>

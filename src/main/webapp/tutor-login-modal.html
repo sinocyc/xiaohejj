@@ -1,0 +1,68 @@
+<div class="modal fade" id="t-login-modal" tabindex="-1" role="dialog" aria-labelledby="t-login-modal-title">
+	<div class="modal-dialog" role="document">
+	    <div class="modal-content">
+			<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="t-login-modal-title">教员登录</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="nav nav-tabs nav-justified">
+					<li class="active"><a href="#tutor-phone-login-tab" data-toggle="tab" id="t-login-choose-phone">手机号登录</a></li>
+					<li><a href="#tutor-uname-login-tab" data-toggle="tab" id="t-login-choose-uname">用户名登录</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tutor-phone-login-tab">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="t-login-phone" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label no-padding-lr text-center">手机号：</label>
+								<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+									<input type="text" class="form-control" id="t-login-phone" placeholder="请输入手机号" />
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-login-password-phone" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label no-padding-lr text-center">密码：</label>
+								<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+									<input type="password" class="form-control" id="t-login-password-phone" placeholder="请输入密码" />
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="tutor-uname-login-tab">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="t-login-uname" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label no-padding-lr text-center">用户名：</label>
+								<div class="col-lg-6 col-md-7 col-sm-7 col-xs-7">
+									<input type="text" class="form-control" id="t-login-uname" placeholder="请输入用户名" />
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-login-password" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label no-padding-lr text-center">密码：</label>
+								<div class="col-lg-6 col-md-7 col-sm-7 col-xs-7">
+									<input type="password" class="form-control" id="t-login-password" placeholder="请输入密码" />
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<p id="login-fail-hint"></p>
+				<button type="button" class="btn btn-primary" id="t-login-button-phone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button type="button" class="btn btn-primary" id="t-login-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>

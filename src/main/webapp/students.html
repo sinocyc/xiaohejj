@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+
+		<!--#include file="head.html" -->
+
+	</head>
+	<body>
+	  	<div class="container">
+	  		
+	  		<!--#include file="top-row.html" -->
+	   		
+			<!-- 导航栏 -->
+			<nav id="nav" class="row hidden-xs">
+				<ul class="nav nav-justified">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="tutors.html">优秀家教</a></li>
+					<li><a href="shome.html">请家教</a></li>
+					<li class="active"><a href="students.html">学员库</a></li>
+					<li><a href="thome.html">做家教</a></li>
+					<li><a href="aboutus.html">关于我们</a></li>
+				</ul>
+			</nav>
+			
+			<div class="row">
+				<div id="students-slogan" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-info">
+					<h1>传授知识，创造价值！<small>----小禾家教</small></h1>
+				</div>
+			</div>
+			<div id="students-student-filters">
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>科目：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="students-subject-filter" class="list-inline">
+							<!-- <li class="active">不限</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>年级：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="students-grade-filter" class="list-inline">
+							<!-- <li class="active">不限</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+						<p class="text-center text-primary"><strong>地区：</strong></p>
+					</div>
+					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						<ul id="students-distr-filter" class="list-inline">
+							<!-- <li class="active">不限</li> -->
+						</ul>
+						<div id="students-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 学员订单列表 -->
+			<div class="row">
+					
+				<div id="students-order-table-wrap" class="table-responsive">
+					<table id="students-order-table" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th class="code-col">编号</th>
+								<th class="sub-col">科目</th>
+								<th class="grade-col">年级</th>
+								<th class="loc-col">位置</th>
+								<th class="message-col">要求</th>
+								<th class="price-col">课时费</th>
+								<th class="time-col">更新时间</th>
+								<th class="status-col">操作</th>
+							</tr>
+						</thead>
+						<tbody id="orders-table-body">
+							<!-- <tr>
+								<td class="code-col">1505799037882</td>
+								<td class="sub-col">数学</td>
+								<td class="grade-col">五年级</td>
+								<td class="loc-col">京口区 北海路100号附近北海路100号附近北海路100号附近北海路100号附近</td>
+								<td class="message-col">小孩子上五年级，数学基础比较薄弱，希望找个有耐心的老师来辅导作业。辅导时间是周一到周五每天晚上6点到8点，课时费每小时60元。要求辅导老师是大三及以上，讲解比较清晰。</td>
+								<td class="price-col">60/小时</td>
+								<td class="time-col">2017-09-19 10:11:29</td>
+								<td class="status-col">申请订单</td>
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+				
+				<!-- 分页 -->
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<nav id="students-student-pager">
+							<ul class="pagination">
+								<li class="available first-page-hide"><span id="students-page-first">首页</span></li>
+								<li class="available first-page-hide"><span id="students-page-previous">上一页</span></li>
+								<li class="disabled first-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+								<li class="active"><span id="students-page-num"></span></li>
+								<li class="disabled last-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+								<li class="available last-page-hide"><span id="students-page-next">下一页</span></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+			
+			<!--#include file="footer.html" -->
+			
+	   	</div>
+	   	
+	   	<!-- 登录Modal -->
+		<!--#include file="tutor-login-modal.html" -->
+		
+		<!-- 通用提示Modal -->
+		<!--#include file="common-hint-modal.html" -->
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://oss.xhtutor.com/static/js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="http://oss.xhtutor.com/static/js/bootstrap.min.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/common.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/students.js"></script>
+	</body>
+</html>

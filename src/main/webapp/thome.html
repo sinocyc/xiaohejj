@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	
+		<!--#include file="head.html" -->
+	
+		<link rel="stylesheet" href="http://oss.xhtutor.com/static/css/cropper.min.css">
+	</head>
+	<body>
+	
+		<!-- 登录前的页面内容 -->
+	  	<div class="container">
+	  		
+	  		<!--#include file="top-row.html" -->
+	   		
+			<!-- 导航栏 -->
+			<nav id="nav" class="row hidden-xs">
+				<ul class="nav nav-justified">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="tutors.html">优秀家教</a></li>
+					<li><a href="shome.html">请家教</a></li>
+					<li><a href="students.html">学员库</a></li>
+					<li class="active"><a href="thome.html">做家教</a></li>
+					<li><a href="aboutus.html">关于我们</a></li>
+				</ul>
+			</nav>
+			
+			<div id="thome-slogan" class="row before-login">
+				<div class="col-lg-12 bg-info">
+					<h1>教员注册<small>----已有账号去<a href="#" data-toggle="modal" data-target="#t-login-modal">[登录]</a></small></h1>
+				</div>
+			</div>
+			
+			<div id="thome-register" class="row before-login">
+				<form id="thome-register-form" class="form-horizontal">
+					<h3 class="part-title">注册信息</h3>
+					<div class="form-group">
+						<label for="t-user-name" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>用户名</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="text" class="form-control" id="t-user-name" name="userName" placeholder="3-20个字符"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-password" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>密码</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="password" class="form-control" id="t-password" name="password" placeholder="6-30个字符"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-password-confirm" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>确认密码</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="password" class="form-control" id="t-password-confirm" placeholder="再次输入密码"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="thome-photo" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">头像</label>
+						<div id="t-photo-preview" class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+							<img id="thome-photo" class="img-responsive" alt="" src="http://oss.xhtutor.com/static/images/default-photo.png" data-toggle="modal" data-target="#thome-photo-modal" />
+						</div>
+						<div><span id="thome-photo-span">点击图片<a data-toggle="modal" data-target="#thome-photo-modal">更换头像</a></span></div>
+					</div>
+					<input id="t-photo-hidden" type="hidden" name="photo"/>
+					<h3 class="part-title">基本信息</h3>
+					<div class="form-group">
+						<label for="t-real-name" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>真实姓名</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="text" class="form-control" id="t-real-name" name="realName"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>性别</label>
+						<div id="t-gender" class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<label class="radio-inline">
+								<input type="radio" id="t-gender-f" name="gender" value="m" checked/>男
+							</label>
+							<label class="radio-inline">
+								<input type="radio" id="t-gender-m" name="gender" value="f"/>女
+							</label>
+						</div>
+						<div class="form-help-text">* 性别必选</div>
+					</div>
+					<div class="form-group">
+						<label for="t-birth-prov" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">家乡</label>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 left-select-wrap">
+							<select class="form-control" id="t-birth-prov">
+								<option value="0">省份</option>
+							</select>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 right-select-wrap">
+							<select class="form-control" id="t-birth-city" name="birthCityId">
+								<option value="0">城市</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-id-card" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">身份证号</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="text" class="form-control" id="t-id-card" name="idCardNum"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-univ" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>就读/毕业院校</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="text" class="form-control" id="t-univ" name="university"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-major" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>所学专业</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="text" class="form-control" id="t-major" name="major"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-type" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>教员类型</label>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 left-select-wrap">
+							<select class="form-control" id="t-type" name="tutorType">
+								<option value="1">在校大学生</option>
+								<option value="2">大学毕业生</option>
+								<option value="3">专业教师</option>
+							</select>
+						</div>
+					</div>
+					<h3 class="part-title">联系方式</h3>
+					<div class="form-group">
+						<label for="t-phone" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>手机号码</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="tel" class="form-control" id="t-phone" name="phone"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-email" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>邮箱</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="email" class="form-control" id="t-email" name="email"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-qq" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">QQ号</label>
+						<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+							<input type="tel" class="form-control" id="t-qq" name="qq"/>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div id="thome-overflow-row-special" class="form-group">
+						<label for="t-curr-prov" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>现居地区</label>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 left-select-wrap">
+							<select class="form-control" id="t-curr-prov">
+								<option value="0">省份</option>
+							</select>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 right-select-wrap">
+							<select class="form-control" id="t-curr-city">
+								<option value="0">城市</option>
+							</select>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 right-select-wrap">
+							<select class="form-control" id="t-curr-distr" name="currDistrId">
+								<option value="0">地区</option>
+							</select>
+						</div>
+					</div>
+					<h3 class="part-title">家教信息</h3>
+					<div class="form-group">
+						<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导科目</label>
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+							<div id="t-subject">
+								<!-- <label class="checkbox-inline">
+									<input type="checkbox" name="subjectId" value=""/>语文
+								</label> -->
+							</div>
+							<div class="form-help-text">* 至少选择一个科目</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导年级</label>
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+							<div id="t-grade">
+								<!-- <label class="checkbox-inline">
+									<input type="checkbox" name="gradeId" value=""/>一年级
+								</label> -->
+							</div>
+							<div class="form-help-text">* 至少选择一个年级</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-teach-prov" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导城市</label>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 left-select-wrap">
+							<select class="form-control" id="t-teach-prov">
+								<option value="0">省份</option>
+							</select>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 right-select-wrap">
+							<select class="form-control" id="t-teach-city" name="teachCityId">
+								<option value="0">城市</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导地区</label>
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+							<div id="t-distr">
+								<!-- <label class="checkbox-inline">
+									<input type="checkbox" name="distrId" value=""/>京口区
+								</label> -->
+							</div>
+							<div class="form-help-text">* 至少选择一个地区</div>
+							<div id="thome-city-hint">提示：如果地区不匹配，请先切换辅导城市。</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导方式</label>
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+							<div id="t-mode">
+								<!-- <label class="checkbox-inline">
+									<input type="checkbox" name="modeId" value="1"/>老师上门
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="modeId" value="2"/>学生上门
+								</label> -->
+							</div>
+							<div class="form-help-text">* 至少选择一种方式</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="t-intro" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">自我描述</label>
+						<div class="col-lg-5 col-md-6 col-sm-7 col-xs-8">
+							<textarea class="form-control" id="t-intro" name="intro"rows="4" maxlength="250" ></textarea>
+							<span class="form-help-text"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-9 col-xs-offset-3">
+							<div class="checkbox">
+								<div id="t-agreement">
+									<label>
+										<input type="checkbox" checked value="1">我已阅读并遵守
+									</label>
+									<a href="#">"小禾家教"服务条款</a>
+								</div>
+								<div class="form-help-text">* 请先阅读并同意"小禾家教"服务条款</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-6 col-xs-offset-3">
+							<button id="thome-register-button" class="btn btn-primary btn-block btn-lg">立即注册</button>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+			
+			<!-- 登录后的页面内容 -->
+			<div id="thome-info-slogan" class="row after-login">
+				<div class="col-lg-12 bg-info">
+					<h1>教员个人中心<small>----小禾家教</small></h1>
+				</div>
+			</div>
+			
+			<div id="thome-tutor-info" class="row after-login">
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 no-padding-lr">
+					<ul id="tutor-info-leftnav" class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#tutor-register-info" data-toggle="pill">用户名/头像</a></li>
+						<li><a href="#tutor-order-info" data-toggle="pill">我的订单</a></li>
+						<li><a href="#tutor-base-info" data-toggle="pill">基本信息</a></li>
+						<li><a href="#tutor-contact-info" data-toggle="pill">联系方式</a></li>
+						<li><a href="#tutor-teach-info" data-toggle="pill">家教信息</a></li>
+						<!-- <li><a href="#tutor-forte-info" data-toggle="pill">擅长科目</a></li>
+						<li><a href="#tutor-authenticate-info" data-toggle="pill">身份认证</a></li> -->
+						<li><a href="#tutor-password-info" data-toggle="pill">修改密码</a></li>
+						<li><a href="#" id="thome-tutor-logout">退出登录</a></li>
+					</ul>
+				</div>
+				<div id="tutor-info-content" class="col-lg-10 col-md-10 col-sm-9 col-xs-9 tab-content">
+					<div class="tab-pane fade in active" id="tutor-register-info">
+						<h2 class="part-title">
+							用户名/头像&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-info btn-sm modify-button before-modify">&nbsp;修改头像&nbsp;</button>
+							<button class="btn btn-primary btn-sm modify-submit-button while-modify">&nbsp;确认修改&nbsp;</button>
+							<button class="btn btn-info btn-sm modify-cancel-button while-modify">&nbsp;取消&nbsp;</button>
+						</h2>
+						<form class="form-horizontal before-modify">
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">用户名：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-user-name-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">头像：</label>
+								<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+									<img id="t-photo-info" class="img-responsive" alt="photo" src="" />
+								</div>
+							</div>
+						</form>
+						
+						<form id="tutor-register-info-modify" class="form-horizontal while-modify">
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">用户名</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-user-name-modify" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="thome-photo-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">头像</label>
+								<div id="t-photo-preview-modify" class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+									<img id="thome-photo-modify" class="img-responsive" alt="" src="" data-toggle="modal" data-target="#thome-photo-modal" />
+								</div>
+								<div><span id="thome-photo-span-modify">点击图片<a data-toggle="modal" data-target="#thome-photo-modal">更换头像</a></span></div>
+							</div>
+							<input id="t-photo-hidden-modify" type="hidden" name="photo"/>
+						</form>
+						
+					</div>
+					
+					<div class="tab-pane fade" id="tutor-order-info">
+						<h2 class="part-title">我的订单</h2>
+						
+						<div id="thome-order-table-wrap" class="table-responsive">
+							<table id="thome-order-table" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th class="code-col">编号</th>
+										<th class="sub-col">科目</th>
+										<th class="grade-col">年级</th>
+										<th class="loc-col">位置</th>
+										<th class="message-col">要求</th>
+										<th class="price-col">课时费</th>
+										<th class="time-col">更新时间</th>
+										<th class="status-col">操作</th>
+									</tr>
+								</thead>
+								<tbody id="thome-order-table-body">
+									<!-- <tr>
+										<td class="code-col">1505799037882</td>
+										<td class="sub-col">数学</td>
+										<td class="grade-col">五年级</td>
+										<td class="loc-col">京口区 北海路100号附近北海路100号附近北海路100号附近北海路100号附近</td>
+										<td class="message-col">小孩子上五年级，数学基础比较薄弱，希望找个有耐心的老师来辅导作业。辅导时间是周一到周五每天晚上6点到8点，课时费每小时60元。要求辅导老师是大三及以上，讲解比较清晰。</td>
+										<td class="price-col">60/小时</td>
+										<td class="time-col">2017-09-19 10:11:29</td>
+										<td class="status-col">申请订单</td>
+									</tr> -->
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+					
+					<div class="tab-pane fade" id="tutor-base-info">
+						<h2 class="part-title">
+							基本信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-info btn-sm modify-button before-modify">&nbsp;修改信息&nbsp;</button>
+							<button class="btn btn-primary btn-sm modify-submit-button while-modify">&nbsp;确认修改&nbsp;</button>
+							<button class="btn btn-info btn-sm modify-cancel-button while-modify">&nbsp;取消&nbsp;</button>
+						</h2>
+						<form class="form-horizontal before-modify">
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">真实姓名：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-real-name-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">性别：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-gender-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">家乡：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-birth-city-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">身份证号：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-id-card-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">就读/毕业院校：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-univ-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">所学专业：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-major-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">教员类型：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-type-info" class="form-control-static"></p>
+								</div>
+							</div>
+						</form>
+						
+						<form id="tutor-base-info-modify" class="form-horizontal while-modify">
+							<div class="form-group">
+								<label for="t-real-name-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>真实姓名</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="text" class="form-control" id="t-real-name-modify" name="realName"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>性别</label>
+								<div id="t-gender-modify" class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<label class="radio-inline">
+										<input type="radio" id="t-gender-f" name="gender" value="m" checked/>男
+									</label>
+									<label class="radio-inline">
+										<input type="radio" id="t-gender-m" name="gender" value="f"/>女
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-birth-prov-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">家乡</label>
+								<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 left-select-wrap">
+									<select class="form-control" id="t-birth-prov-modify">
+										<option value="0">省份</option>
+									</select>
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 right-select-wrap">
+									<select class="form-control" id="t-birth-city-modify" name="birthCityId">
+										<option value="0">城市</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-id-card-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">身份证号</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="text" class="form-control" id="t-id-card-modify" name="idCardNum"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-univ-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>就读/毕业院校</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="text" class="form-control" id="t-univ-modify" name="university"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-major-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>所学专业</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="text" class="form-control" id="t-major-modify" name="major"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-type-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>教员类型</label>
+								<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 left-select-wrap">
+									<select class="form-control" id="t-type-modify" name="tutorType">
+										<option value="1">在校大学生</option>
+										<option value="2">大学毕业生</option>
+										<option value="3">专业教师</option>
+									</select>
+								</div>
+							</div>
+						</form>
+						
+					</div>
+					
+					<div class="tab-pane fade" id="tutor-contact-info">
+						<h2 class="part-title">
+							联系方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-info btn-sm modify-button before-modify">&nbsp;修改信息&nbsp;</button>
+							<button class="btn btn-primary btn-sm modify-submit-button while-modify">&nbsp;确认修改&nbsp;</button>
+							<button class="btn btn-info btn-sm modify-cancel-button while-modify">&nbsp;取消&nbsp;</button>
+						</h2>
+						<form class="form-horizontal before-modify">
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">手机号码：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-phone-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">邮箱：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-email-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">QQ号：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-qq-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">现居地区：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-curr-city-info" class="form-control-static"></p>
+								</div>
+							</div>
+						</form>
+						
+						<form id="tutor-contact-info-modify" class="form-horizontal while-modify">
+							<div class="form-group">
+								<label for="t-phone-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>手机号码</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="tel" class="form-control" id="t-phone-modify" name="phone"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-email-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>邮箱</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="email" class="form-control" id="t-email-modify" name="email"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-qq-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">QQ号</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="tel" class="form-control" id="t-qq-modify" name="qq"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div id="thome-overflow-row-special" class="form-group">
+								<label for="t-curr-prov-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>现居地区</label>
+								<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 left-select-wrap">
+									<select class="form-control" id="t-curr-prov-modify">
+										<option value="0">省份</option>
+									</select>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 right-select-wrap">
+									<select class="form-control" id="t-curr-city-modify">
+										<option value="0">城市</option>
+									</select>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 right-select-wrap">
+									<select class="form-control" id="t-curr-distr-modify" name="currDistrId">
+										<option value="0">地区</option>
+									</select>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="tutor-teach-info">
+						<h2 class="part-title">
+							家教信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-info btn-sm modify-button before-modify">&nbsp;修改信息&nbsp;</button>
+							<button class="btn btn-primary btn-sm modify-submit-button while-modify">&nbsp;确认修改&nbsp;</button>
+							<button class="btn btn-info btn-sm modify-cancel-button while-modify">&nbsp;取消&nbsp;</button>
+						</h2>
+						<form class="form-horizontal before-modify">
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">辅导科目：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-subject-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">辅导年级：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-grade-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">辅导城市：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-teach-city-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">辅导地区：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-distr-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">辅导方式：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-mode-info" class="form-control-static"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">自我描述：</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<p id="t-intro-info" class="form-control-static"></p>
+								</div>
+							</div>
+						</form>
+						
+						<form id="tutor-teach-info-modify" class="form-horizontal while-modify">
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导科目</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<div id="t-subject-modify">
+										<!-- <label class="checkbox-inline">
+											<input type="checkbox" name="subjectId" value=""/>语文
+										</label> -->
+									</div>
+									<div class="form-help-text">* 至少选择一个科目</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导年级</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<div id="t-grade-modify">
+										<!-- <label class="checkbox-inline">
+											<input type="checkbox" name="gradeId" value=""/>一年级
+										</label> -->
+									</div>
+									<div class="form-help-text">* 至少选择一个年级</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-teach-prov" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导城市</label>
+								<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 left-select-wrap">
+									<select class="form-control" id="t-teach-prov-modify">
+										<option value="0">省份</option>
+									</select>
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 right-select-wrap">
+									<select class="form-control" id="t-teach-city-modify" name="teachCityId">
+										<option value="0">城市</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导地区</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<div id="t-distr-modify">
+										<!-- <label class="checkbox-inline">
+											<input type="checkbox" name="distrId" value=""/>京口区
+										</label> -->
+									</div>
+									<div class="form-help-text">* 至少选择一个地区</div>
+									<div id="thome-city-hint">提示：如果地区不匹配，请先切换辅导城市。</div>
+									<!-- <div id="t-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div> -->
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>辅导方式</label>
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+									<div id="t-mode-modify">
+										<!-- <label class="checkbox-inline">
+											<input type="checkbox" name="modeId" value="1"/>老师上门
+										</label>
+										<label class="checkbox-inline">
+											<input type="checkbox" name="modeId" value="2"/>学生上门
+										</label> -->
+									</div>
+									<div class="form-help-text">* 至少选择一种方式</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-intro-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label">自我描述</label>
+								<div class="col-lg-5 col-md-6 col-sm-7 col-xs-8">
+									<textarea class="form-control" id="t-intro-modify" name="intro"rows="4" maxlength="250" ></textarea>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					<!-- <div class="tab-pane fade" id="tutor-forte-info">
+						<h2 class="part-title">擅长科目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-info btn-sm">&nbsp;修改信息&nbsp;</button></h2>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">擅长科目：</label>
+								<div class="col-lg-10">
+									<p class="form-control-static">擅长科目</p>
+								</div>
+							</div>
+						</form>
+					</div> -->
+					
+					<!-- <div class="tab-pane fade" id="tutor-authenticate-info">
+						<h2 class="part-title">身份认证&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-info btn-sm">&nbsp;修改信息&nbsp;</button></h2>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">身份认证：</label>
+								<div class="col-lg-10">
+									<p class="form-control-static">身份认证</p>
+								</div>
+							</div>
+						</form>
+					</div> -->
+					
+					<div class="tab-pane fade" id="tutor-password-info">
+						<h2 class="part-title">
+							修改密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button class="btn btn-primary btn-sm modify-submit-button">&nbsp;确认修改&nbsp;</button>
+						</h2>
+						<form id="tutor-password-info-modify" class="form-horizontal">
+							<div class="form-group">
+								<label for="t-password-origin-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>原始密码</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="password" class="form-control" id="t-password-origin-modify" name="originPassword" placeholder="6-30个字符"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-password-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>新密码</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="password" class="form-control" id="t-password-modify" name="newPassword" placeholder="6-30个字符"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="t-password-confirm-modify" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 control-label"><span class="f-sign">* </span>重复新密码</label>
+								<div class="col-lg-4 col-md-5 col-sm-7 col-xs-8">
+									<input type="password" class="form-control" id="t-password-confirm-modify" placeholder="再次输入新密码"/>
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!--#include file="footer.html" -->
+			
+	   	</div>
+	   	
+	   	<!-- 头像Modal -->
+		<div class="modal fade" id="thome-photo-modal" tabindex="-1" role="dialog" aria-labelledby="photo-modal-title">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="photo-modal-title">上传头像</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<div id="modal-photo-choose">
+							<label for="modal-photo-input">选择照片</label>
+							<input type="file" id="modal-photo-input"/>
+						</div>
+						<div id="modal-photo-div">
+							<img id="modal-photo" src="http://oss.xhtutor.com/static/images/default-photo.png" class="img-responsive" alt="请选择正确的图片格式" />
+						</div>
+			     	</div>
+			   		<div class="modal-footer">
+				        <button id="photo-crop-btn" type="button" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;截取照片&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			      	</div>
+		    	</div>
+			</div>
+		</div>
+		
+		<!-- 注册成功Modal -->
+		<div class="modal fade" id="t-register-success-modal" tabindex="-1" role="dialog" aria-labelledby="t-register-success-title">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="t-register-success-title">提示：</h4>
+					</div>
+					<div class="modal-body">
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;教员注册成功！您可以在个人中心查看。</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;&nbsp;&nbsp;</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 修改结果提示Modal -->
+		<div class="modal fade" id="t-modify-result-modal" tabindex="-1" role="dialog" aria-labelledby="t-modify-result-title">
+			<div class="modal-dialog modal-sm" role="document">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="t-modify-result-title">提示：</h4>
+					</div>
+					<div class="modal-body">
+						<p id="t-modify-result-text"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">&nbsp;&nbsp;确定&nbsp;&nbsp;</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 登录Modal -->
+		<!--#include file="tutor-login-modal.html" -->
+	   	
+		<!-- 通用提示Modal -->
+		<!--#include file="common-hint-modal.html" -->
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://oss.xhtutor.com/static/js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="http://oss.xhtutor.com/static/js/bootstrap.min.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/cropper.min.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/common.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/thome.js"></script>
+	</body>
+</html>

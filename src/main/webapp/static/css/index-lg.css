@@ -1,0 +1,1005 @@
+@charset "UTF-8";
+/* 大屏幕（大桌面显示器，大于等于1200px） */
+@media (min-width: 1200px) {
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+	color: #555;
+}
+.no-padding-l {
+	padding-left: 0;
+}
+.no-padding-r {
+	padding-right: 0;
+}
+.no-padding-lr {
+	padding-left: 0;
+	padding-right: 0;
+}
+#top-row {
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	background-color: #fff;
+}
+/* top row 下的4个部分没有左右内边距 */
+#top-row>div {
+	padding-left: 0;
+	padding-right: 0;
+}
+#top-row>div>div {
+	padding-left: 0;
+	padding-right: 0;
+}
+/* 通用提示modal字体大小 */
+#common-hint-modal-body {
+	font-size: 16px;
+	text-align: center;
+}
+/* 登录前后有区别的元素先隐藏 */
+.before-login {
+	display: none;
+}
+.after-login {
+	display: none;
+}
+/* top城市的外边距和字体 */
+#current-city-wrap {
+	margin-top: 10px;
+	font-size: 24px;
+}
+#top-city-part {
+	/* padding-bottom: 6px; */
+}
+/* 切换城市select隐藏 */
+#home-city-selects {
+	display: none;
+}
+#top-city-part>div>div {
+	padding-left: 0;
+	padding-right: 4px;
+}
+/* 定制的按钮高度 */
+.customize-btn {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+/* 登录部分的边距 */
+#top-login-part>div {
+	/* margin-top: 7px;
+	margin-bottom: 7px; */
+	margin-top: 10px;
+}
+#top-login-part {
+	padding-bottom: 8.5px;
+}
+#tutor-login-row {
+	
+}
+/* 导航菜单切换显示按钮样式 */
+#top-menu-toggle {
+	margin-bottom: 1px;
+}
+/* 导航栏 */
+#nav {
+	background-color: #337AB7;
+	padding-top: 3px;
+	padding-right: 2px;
+	padding-left: 2px;
+	margin-bottom: 1px;
+	border-radius: 5px 5px 0 0;
+}
+#nav>ul>li>a {
+	font-size: 20px;
+	color: #fff;
+	border-radius: 5px 5px 0 0;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+#nav>ul>li.active>a {
+	background-color: #fff;
+	color: #337AB7;
+}
+/* 清除bootstrap带的获得焦点时变色的效果；清除获得焦点时的轮廓线 */
+#nav>ul>li:not(.active)>a:focus {
+	background-color: transparent;
+	outline: none;
+}
+#nav>ul>li:not(.active)>a:hover {
+	background-color: #115895;
+}
+/* 课程导航面板之间的间距 */
+#home-course-nav {
+	padding-top: 14.5px;
+	padding-bottom:	14.5px;
+	border-bottom: 1px solid #aaa;
+	box-shadow: 0px 0px 2px 1px #aaa inset;
+}
+#home-course-nav .panel {
+	margin-bottom: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+#home-course-nav>div>div {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* 轮播图的左右内边距 */
+#home-carousel {
+	padding-left: 0;
+	padding-right: 0;
+}
+/* 轮播图下方标题间距调整 */
+#home-slogan {
+	margin-top: 12px;
+	margin-bottom: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	box-shadow: 0px 0px 2px 1px #aaa;
+}
+#home-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+/* 首页教员列表,上内边距，阴影边框 */
+#home-tutor-part {
+	padding-top: 15px;
+	padding-bottom: 7px;
+	box-shadow: 0px 0px 2px 1px #aaa;
+}
+/* 首页教员列表标题字体大小 */
+#home-tutor-title {
+	font-size: 30px;
+}
+/* 首页教员列表的两侧边距 */
+#home-tutor-list {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+/* 首页教员项的边框边距等 */
+#home-tutor-list>div>div {
+	box-shadow: 0 0 2px 1px #aaa;
+	padding-left:5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	margin: 7px;
+}
+/* 首页教员列表中按钮的下外边距，没有photo时控制下边距 */
+#home-tutor-list .tutor-list-btns {
+	margin-bottom: 10px;
+}
+#home-tutor-list .tutor-list-btns>button {
+	padding: 3px 10px;
+}
+#home-tutor-list p {
+	margin-bottom: 10px;
+}
+#home-tutor-list .home-tutor-photo {
+	padding-left: 0;
+	padding-right: 5px;
+}
+#home-tutor-list .home-tutor-photo>p {
+	margin-top: 5px;
+}
+#home-tutor-list p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* 教员头像hover时鼠标变为手指 */
+#home-tutor-list img:hover {
+	cursor: pointer;
+}
+
+/* 首页快速发布家教信息 */
+#order-panel-title {
+	box-shadow: 0px 0px 2px 1px #aaa;
+	font-size: 26px;
+	padding-top: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#order-form-wrap {
+	box-shadow: 0px 0px 2px 1px #aaa inset;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+/* 订单form的右内边距 */
+#order-form .form-group {
+	padding-right: 10px;
+}
+#order-form .form-group>label {
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: center;
+}
+/* order地点省城区select样式 */
+#order-prov-wrap {
+	padding-right: 2px;
+}
+#order-city-wrap {
+	padding-left: 2px;
+}
+#order-distr-wrap {
+	padding-right: 0;
+}
+#order-addr-wrap {
+	
+}
+#order-detail-addr {
+	height: 54px;
+}
+#order-message {
+	height: 94px;
+}
+/* 直接联系我们 */
+#order-panel-contact {
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 0;
+}
+#order-panel-contact>p {
+	margin-bottom: 5px;
+}
+/* order-success-modal中提示body的样式 */
+#order-success-modal .modal-body p {
+	font-size: 18px;
+}
+
+/* 宣传一标题样式 */
+#home-ad1 {
+	margin: 30px 0;
+}
+#ad1-title>div>h2 {
+	font-size: 30px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #0059b2;
+}
+#ad1-title>div>p {
+	font-size: 18px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #999;
+	margin: 20px 0 40px 0;
+}
+/* 宣传1内容样式 */
+#ad1-body {
+	color: #666;
+}
+#ad1-body .media-heading {
+	margin: 5px 0 20px 0;
+}
+#ad1-body>div>div {
+	padding: 20px;
+}
+
+/* 宣传2字体颜色 */
+#home-ad2 {
+	color: #666;
+}
+/* 宣传2中字体的大小 */
+#home-ad2 h3 {
+	font-size: 26px;
+}
+#home-ad2 p {
+	font-size: 18px;
+}
+/* 宣传2第一行背景颜色 */
+#ad2-line1 {
+	background-color: #e0e0e0;
+}
+#ad2-line2 {
+	background-color: #eee;
+}
+/* 宣传2内边距 */
+#home-ad2>div {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+/* 友情链接样式 */
+#friendlink {
+	margin-top: 40px;
+	margin-left: 30px;
+}
+#friendlink>div>ul>li {
+	margin-right: 15px;
+}
+#friendlink>div>ul>li>a {
+	color: #666;
+}
+
+/* 页脚1的样式 */
+#footer1 {
+	 margin-top: 10px;
+	 padding-top: 30px;
+	 padding-bottom: 30px;
+	 border-top: 1px solid #449D44;
+}
+#footer1>div {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+#footer1-slogan {
+	font-size: 24px;
+}
+#footer1 .footer1-text {
+	
+}
+/* 页脚2的样式 */
+#footer2 {
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 border-top: 1px solid #aaa;"
+}
+
+
+
+
+
+
+/* tutors页面的样式 */
+/* 宣传标题样式 */
+#tutors-slogan {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #efefef;
+}
+#tutors-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* 教员筛选条件样式 */
+#tutors-tutor-filters {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#tutors-tutor-filters>div {
+	font-size: 15px;
+	padding-top: 8px;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #EDF1F2;
+}
+#tutors-tutor-filters>div>div {
+	padding-left: 0;
+	padding-right: 0;
+}
+#tutors-tutor-filters>div>div>ul>li {
+	padding: 6px 10px;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	border-radius: 5%;
+}
+#tutors-tutor-filters>div>div>ul>li.active {
+	color: #fff;
+	background-color: #337AB7;
+}
+#tutors-tutor-filters>div>div>p {
+	padding-top: 6px;
+}
+#tutors-tutor-filters>div>div>ul {
+	margin-bottom: 0;
+}
+#tutors-tutor-filters>div>div>ul>li:hover {
+	cursor: pointer;
+}
+#tutors-tutor-filters>div>div>ul>li:not(.active):hover {
+	color: red;
+}
+/* 切换城市的提示的样式 */
+#tutors-city-hint {
+	color: #888;
+}
+
+/* tutors页面tutor列表样式 */
+#tutors-tutor-list {
+	box-shadow: 0 0 2px 1px #aaa;
+}
+/* 教员头像hover时鼠标变为手指 */
+#tutors-tutor-list img:hover {
+	cursor: pointer;
+}
+#tutors-list-title {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+#tutors-list-title-text {
+	font-size: 32px;
+}
+#tutors-list-title-icons {
+	font-size: 14px;
+}
+.tutors-tutor-item {
+	box-shadow: 0 0 2px 1px #aaa;
+	padding-top: 15px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 15px;
+}
+.tutors-tutor-item button {
+	padding: 3px 10px;
+}
+.tutors-tutor-item p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.tutors-tutor-item .tutor-photo {
+	padding-bottom: 15px;
+}
+.tutors-tutor-item .tutor-name {
+	font-size: 18px;
+}
+/* 图标颜色 */
+.name-icon {
+	color: pink;
+}
+.degree-icon {
+	color: #333;
+}
+.college-icon {
+	color: #5CB85C;
+}
+.teacher-icon {
+	color: #337AB7;
+}
+/* tutors页面分页按钮样式 */
+#tutors-tutor-pager li.available span:hover {
+	cursor: pointer;
+}
+#tutors-tutor-pager li.disabled span:hover {
+	cursor: default;
+}
+
+/* tutor-detail页面的样式 */
+/* 宣传标题样式 */
+#tutor-detail-slogan {
+	 margin-top: 3px;
+	 margin-bottom: 10px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #efefef;
+}
+#tutor-detail-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* 详细信息的外边框 */
+#tutor-detail-tutor {
+	box-shadow: 0 0 2px 1px #aaa;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+/* 小标题样式 */
+#tutor-detail-tutor h2 {
+	color: #337AB7;
+	font-size: 30px;
+}
+/* 下划线样式 */
+#tutor-detail-tutor hr {
+	border-top:2px solid #337AB7;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+/* 内容的外边距 */
+#tutor-detail-tutor .tutor-detail-body {
+	margin: 20px;
+}
+/* 内容中h3标题的上外边距 */
+#tutor-detail-tutor .tutor-detail-body h3 {
+	margin-top: 0;
+}
+
+
+
+
+
+
+/* 学员主页样式 */
+#stuhome-slogan {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #ccc;
+	 margin-bottom: 10px;
+}
+#stuhome-slogan h1 {
+	font-size: 32px;
+}
+
+
+/* students页面的样式 */
+/* 宣传标题样式 */
+#students-slogan {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #efefef;
+}
+#students-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* 学员筛选条件样式 */
+#students-student-filters {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#students-student-filters>div {
+	font-size: 15px;
+	padding-top: 8px;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #EDF1F2;
+}
+#students-student-filters>div>div {
+	padding-left: 0;
+	padding-right: 0;
+}
+#students-student-filters>div>div>ul>li {
+	padding: 6px 10px;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	border-radius: 5%;
+}
+#students-student-filters>div>div>ul>li.active {
+	color: #fff;
+	background-color: #337AB7;
+}
+#students-student-filters>div>div>p {
+	padding-top: 6px;
+}
+#students-student-filters>div>div>ul {
+	margin-bottom: 0;
+}
+#students-student-filters>div>div>ul>li:hover {
+	cursor: pointer;
+}
+#students-student-filters>div>div>ul>li:not(.active):hover {
+	color: red;
+}
+#students-city-hint {
+	color: #888;
+}
+
+/* students页面订单表格样式 */
+#students-order-table-wrap {
+	 border-radius: 4px 4px 0 0;
+}
+#students-order-table th {
+	text-align: center;
+}
+#students-order-table td {
+	text-align: center;
+	vertical-align: middle;
+}
+#students-order-table .code-col {
+	width: 10%;
+	min-width: 45px;
+}
+#students-order-table .sub-col {
+	width: 10%;
+	min-width: 45px;
+}
+#students-order-table .grade-col {
+	width: 10%;
+	min-width: 45px;
+}
+#students-order-table .loc-col {
+	width: 14%;
+	min-width: 45px;
+}
+#students-order-table .message-col {
+	width: 26%;
+	min-width: 45px;
+}
+#students-order-table .price-col {
+	width: 10%;
+	min-width: 59px;
+}
+#students-order-table .time-col {
+	width: 10%;
+	min-width: 73px;
+}
+#students-order-table .status-col {
+	width: 10%;
+	min-width: 45px;
+}
+/* 表头颜色 */
+#students-order-table thead tr {
+	background-color: #D9EDF7;
+}
+
+/* Firefox的fieldset元素问题解决 */
+/* @-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+} */
+
+/* students页面分页按钮样式 */
+#students-student-pager li.available span:hover {
+	cursor: pointer;
+}
+#students-student-pager li.disabled span:hover {
+	cursor: default;
+}
+
+/* thome页面样式 */
+#thome-slogan {
+	/* 抵消boxshadow的宽度 */
+	margin-left: -14px;
+	margin-right: -14px;
+}
+#thome-slogan>div {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #aaa;
+}
+#thome-slogan h1 {
+	font-size: 32px;
+}
+
+#thome-register {
+	margin-top: 3px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #f6f6f6;
+	box-shadow: 0 0 2px 1px #aaa;
+	/* 抵消boxshadow的宽度 */
+	margin-left: -14px;
+	margin-right: -14px;
+}
+/* 表单中select的左右内边距 */
+#thome-register-form .left-select-wrap {
+	padding-right: 0;
+}
+#thome-register-form .right-select-wrap {
+	padding-left: 4px;
+	padding-right: 0;
+}
+
+#thome-register-form .part-title {
+	padding-left: 40px;
+	color: #337ab7;
+	font-size: 25px;
+}
+#thome-register-form .form-group>label {
+	padding-right: 15px;
+	text-align: right;
+}
+/* 现居城市三个select超出屏幕宽度 */
+#thome-overflow-row-special {
+	padding-right: 20px;
+}
+#thome-photo:hover {
+	cursor: pointer;
+}
+#modal-photo-choose label, #modal-photo-choose input {
+	display: inline;
+}
+#modal-photo-choose {
+	margin-bottom: 10px;
+}
+
+/* 表单必填项图标 */
+.f-sign {
+	color: red;
+}
+/* tutor注册成功后modal的body的字体大小 */
+#t-register-success-modal .modal-body p {
+	font-size: 18px;
+}
+
+/* 表单验证样式 */
+.form-control-feedback {
+	display: none;
+}
+#thome-photo-span:hover {
+	cursor: pointer;
+}
+
+.form-help-text {
+	color: red;
+	display: none;
+}
+#thome-city-hint {
+	color: #888;
+}
+
+/* thome页面info部分样式 */
+/* thome个人中心标题样式 */
+#thome-info-slogan {
+	/* 抵消boxshadow的宽度 */
+	margin-left: -14px;
+	margin-right: -14px;
+}
+#thome-info-slogan>div {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #aaa;
+}
+#thome-info-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* thome个人中心内容样式 */
+#thome-tutor-info {
+	margin-top: 3px;
+	background-color: #f6f6f6;
+	min-height: 500px;
+}
+#tutor-info-leftnav {
+	margin-top: 15px;
+	background-color: #eee;
+}
+#tutor-info-leftnav>li>a {
+	text-align: center;
+}
+#tutor-info-leftnav>li>a:hover {
+	background-color: #ccc;
+}
+#tutor-info-leftnav>li.active>a {
+	background-color: #87CEFA;
+	color: #fff;
+}
+
+#tutor-info-content .part-title {
+	color: #337ab7;
+	font-size: 30px;
+}
+#tutor-info-content .form-group>label {
+	padding-right: 15px;
+	text-align: right;
+} 
+/* 修改表单先隐藏 */
+#tutor-info-content .while-modify {
+	display: none;
+}
+/* 修改头像，图片和链接hover时指针 */
+#thome-photo-modify:hover {
+	cursor: pointer;
+}
+#thome-photo-span-modify:hover {
+	cursor: pointer;
+}
+/* 修改结果modal字体大小 */
+#t-modify-result-text {
+	font-size: 16px;
+	text-align: center;
+}
+/* 修改表单中select的左右内边距 */
+#tutor-info-content .left-select-wrap {
+	padding-right: 0;
+}
+#tutor-info-content .right-select-wrap {
+	padding-left: 4px;
+	padding-right: 0;
+}
+
+/* thome页面我的订单表格样式 */
+#thome-order-table-wrap {
+	 border-radius: 4px 4px 0 0;
+}
+#thome-order-table th {
+	text-align: center;
+}
+#thome-order-table td {
+	text-align: center;
+	vertical-align: middle;
+}
+#thome-order-table .code-col {
+	width: 10%;
+	min-width: 45px;
+}
+#thome-order-table .sub-col {
+	width: 10%;
+	min-width: 45px;
+}
+#thome-order-table .grade-col {
+	width: 10%;
+	min-width: 45px;
+}
+#thome-order-table .loc-col {
+	width: 14%;
+	min-width: 45px;
+}
+#thome-order-table .message-col {
+	width: 26%;
+	min-width: 45px;
+}
+#thome-order-table .price-col {
+	width: 10%;
+	min-width: 59px;
+}
+#thome-order-table .time-col {
+	width: 10%;
+	min-width: 73px;
+}
+#thome-order-table .status-col {
+	width: 10%;
+	min-width: 45px;
+}
+
+/* 表头颜色 */
+#thome-order-table thead tr {
+	background-color: #D9EDF7;
+}
+
+
+
+
+
+
+
+
+
+
+/* aboutus页面样式 */
+/* 宣传标题样式 */
+#aboutus-slogan {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #efefef;
+}
+#aboutus-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+#aboutus-body {
+	margin-top: 3px;
+	background-color: #f6f6f6;
+	min-height: 500px;
+	padding-bottom: 30px;
+}
+#aboutus-leftnav {
+	margin-top: 15px;
+	background-color: #eee;
+}
+#aboutus-leftnav>li>a {
+	text-align: center;
+}
+#aboutus-leftnav>li>a:hover {
+	background-color: #ccc;
+}
+#aboutus-leftnav>li.active>a {
+	background-color: #87CEFA;
+	color: #fff;
+}
+#aboutus-content .tab-pane {
+	padding-right: 50px;
+}
+#aboutus-content h2 {
+	font-size: 30px;
+}
+#aboutus-content p {
+	font-size: 16px;
+	margin-left: 30px;
+}
+#aboutus-content p.important {
+	color: red;
+}
+
+/* tutor登录modal的样式 */
+#login-fail-hint {
+	display: none;
+	color: red;
+	font-size: 16px;
+}
+/* tutor登录modal中tab-content的上外边距 */
+#t-login-modal .tab-content {
+	margin-top: 20px;
+}
+/* 用户名登录按钮先隐藏 */
+#t-login-button {
+	display: none;
+}
+
+
+
+
+/* 管理员页面样式 */
+/* admin登录modal的样式 */
+#admin-login-fail-hint {
+	display: none;
+	color: red;
+	font-size: 16px;
+}
+/* 宣传标题样式 */
+#admin-slogan {
+	 margin-top: 3px;
+	 padding-top: 20px;
+	 padding-bottom: 10px;
+	 box-shadow: 0 0 2px 1px #efefef;
+}
+#admin-slogan h1 {
+	font-size: 32px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* 管理员页面中教员筛选条件样式 */
+#admin-tutor-filters {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#admin-tutor-filters>div {
+	font-size: 14px;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #EDF1F2;
+}
+#admin-tutor-filters>div>div {
+	padding-left: 0;
+	padding-right: 0;
+}
+#admin-tutor-filters>div>div>ul>li {
+	padding: 2px 4px;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	border-radius: 5%;
+}
+#admin-tutor-filters>div>div>ul>li.active {
+	color: #fff;
+	background-color: #337AB7;
+}
+#admin-tutor-filters>div>div>p {
+	padding-top: 2px;
+}
+#admin-tutor-filters>div>div>ul {
+	margin-bottom: 0;
+}
+#admin-tutor-filters>div>div>ul>li:hover {
+	cursor: pointer;
+}
+#admin-tutor-filters>div>div>ul>li:not(.active):hover {
+	color: red;
+}
+/* 切换城市的提示的样式 */
+#admin-city-hint {
+	color: #888;
+}
+/* admin页面教员item间距 */
+.admin-tutor-item {
+	box-shadow: 0 0 2px 1px #aaa;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+}
+/* admin页面tutor分页按钮样式 */
+#admin-tutor-pager li.available span:hover {
+	cursor: pointer;
+}
+#admin-tutor-pager li.disabled span:hover {
+	cursor: default;
+}
+
+}
+
+
+

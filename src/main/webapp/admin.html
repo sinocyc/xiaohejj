@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	
+		<!--#include file="head.html" -->
+	
+	</head>
+	<body>
+		<div class="container">
+		
+			<!--#include file="admin-top-row.html" -->
+		
+			<div class="row">
+				<div id="admin-slogan" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-info">
+					<h1>管理员界面<small>----小禾家教</small></h1>
+				</div>
+			</div>
+			<div class="before-login">
+				请先以管理员身份登录！
+			</div>
+			<div class="col-sm-2 after-login">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#tutor-manager" data-toggle="tab">教员管理</a></li>
+					<li><a href="#student-manager" data-toggle="tab">学生管理</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-10 after-login">
+				<div class="tab-content">
+					<div class="tab-pane active" id="tutor-manager">
+						<div id="admin-tutor-filters">
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+									<p class="text-center text-primary"><strong>科目：</strong></p>
+								</div>
+								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+									<ul id="admin-tutors-subject-filter" class="list-inline">
+										<!-- <li class="active">不限</li> -->
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+									<p class="text-center text-primary"><strong>年级：</strong></p>
+								</div>
+								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+									<ul id="admin-tutors-grade-filter" class="list-inline">
+										<!-- <li class="active">不限</li> -->
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+									<p class="text-center text-primary"><strong>地区：</strong></p>
+								</div>
+								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+									<ul id="admin-tutors-distr-filter" class="list-inline">
+										<!-- <li class="active">不限</li> -->
+									</ul>
+									<div id="admin-tutors-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+									<p class="text-center text-primary"><strong>方式：</strong></p>
+								</div>
+								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+									<ul id="admin-tutors-mode-filter" class="list-inline">
+										<li class="active" mode-id="">不限</li>
+										<li mode-id="1">老师上门</li>
+										<li mode-id="2">学生上门</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+									<p class="text-center text-primary"><strong>类型：</strong></p>
+								</div>
+								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+									<ul id="admin-tutors-type-filter" class="list-inline">
+										<li class="active" tutor-type="">不限</li>
+										<li tutor-type='1'>在校大学生</li>
+										<li tutor-type='2'>大学毕业生</li>
+										<li tutor-type='3'>优秀教师</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+									<p class="text-center text-primary"><strong>性别：</strong></p>
+								</div>
+								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+									<ul id="admin-tutors-gender-filter" class="list-inline">
+										<li class="active" gender="">不限</li>
+										<li gender="m">男</li>
+										<li gender="f">女</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="admin-tutors-list-wrap">
+							<!-- <div class="row admin-tutor-item">
+								<div class="col-sm-1 no-padding-r tutor-photo">
+									<a href="#">
+								    	<img class="img-responsive img-rounded center-block" src="http://oss.xhtutor.com/static/images/default-photo.png" alt="photo">
+							  		</a>
+								</div>
+								<div class="col-sm-11">
+									<span><strong>姓名：</strong>崔益成</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>性别：</strong>男</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>身份：</strong>毕业大学生</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>学校：</strong>长安大学</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>专业：</strong>材料成型及控制工程</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>最近登录：</strong>2017/10/30 15:2:8</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>手机：</strong>15067160750</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	<span><strong>邮箱：</strong>sinocyc@163.com</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>QQ：</strong>895528340</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	<span><strong>身份证：</strong>320981199209102212</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<span><strong>科目：</strong>数学 英语 数学 英语 数学 英语 数学 英语</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	<span><strong>年级：</strong>三年级 五年级 六年级 三年级 五年级 六年级 三年级 五年级 六年级</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	<span><strong>地区：</strong>京口区 句容市 西湖区 京口区 句容市 西湖区 京口区 句容市 西湖区</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	<span><strong>方式：</strong>教员上门 学生上门</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	<span><strong>自我描述：</strong>毕业于长安大学（211重点大学），本科是工科材料专业。数学和物理成绩一直非常优秀，教学生认真负责，有耐心。</span>
+								</div>
+							</div> -->
+						</div>
+						
+						<!-- 分页 -->
+						<div class="row">
+							<div class="col-lg-12 text-center">
+								<nav id="admin-tutor-pager" aria-label="Page navigation">
+									<ul class="pagination">
+										<li class="available first-page-hide"><span id="admin-tutors-page-first">首页</span></li>
+										<li class="available first-page-hide"><span id="admin-tutors-page-previous">上一页</span></li>
+										<li class="disabled first-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+										<li class="active"><span id="admin-tutors-page-num"></span></li>
+										<li class="disabled last-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+										<li class="available last-page-hide"><span id="admin-tutors-page-next">下一页</span></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						
+					</div>
+					<div class="tab-pane" id="student-manager">student manager</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Admin Login Modal -->
+		<div class="modal fade" id="admin-login-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+						<h4 class="modal-title">管理员登录</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="admin-user-name" class="col-sm-3 control-label">用户名：</label>
+								<div class="col-sm-7">
+									<input type="email" class="form-control" id="admin-login-uname">
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="admin-password" class="col-sm-3 control-label">密码：</label>
+								<div class="col-sm-7">
+									<input type="password" class="form-control" id="admin-login-password">
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+									<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<span class="form-help-text"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<p id="admin-login-fail-hint"></p>
+						<button type="button" class="btn btn-primary" id="admin-login-btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 通用提示Modal -->
+		<!--#include file="common-hint-modal.html" -->
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://oss.xhtutor.com/static/js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="http://oss.xhtutor.com/static/js/bootstrap.min.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/common.js"></script>
+		<script src="http://oss.xhtutor.com/static/js/admin.js"></script>
+	</body>
+</html>

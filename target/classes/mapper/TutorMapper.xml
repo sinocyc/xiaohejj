@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhtutor.tutor.dao.TutorMapper">
+  <resultMap id="BaseResultMap" type="com.xhtutor.tutor.bean.Tutor">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="gender" jdbcType="CHAR" property="gender" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="curr_distr_id" jdbcType="INTEGER" property="currDistrId" />
+    <result column="curr_addr" jdbcType="VARCHAR" property="currAddr" />
+    <result column="birth_city_id" jdbcType="INTEGER" property="birthCityId" />
+    <result column="id_card_num" jdbcType="VARCHAR" property="idCardNum" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="tutor_type" jdbcType="INTEGER" property="tutorType" />
+    <result column="univ_id" jdbcType="INTEGER" property="univId" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="id_card_pic" jdbcType="VARCHAR" property="idCardPic" />
+    <result column="stu_cert_pic" jdbcType="VARCHAR" property="stuCertPic" />
+    <result column="teach_cert_pic" jdbcType="VARCHAR" property="teachCertPic" />
+    <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
+    <result column="university" jdbcType="VARCHAR" property="university" />
+    <result column="teach_city_id" jdbcType="INTEGER" property="teachCityId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_name, password, photo, status, last_login, real_name, gender, phone, email, 
+    qq, curr_distr_id, curr_addr, birth_city_id, id_card_num, major, tutor_type, univ_id, 
+    intro, id_card_pic, stu_cert_pic, teach_cert_pic, pay_account, university, teach_city_id
+  </sql>
+  <select id="selectByExample" parameterType="com.xhtutor.tutor.bean.TutorExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_tutor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_tutor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_tutor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xhtutor.tutor.bean.TutorExample">
+    delete from t_tutor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xhtutor.tutor.bean.Tutor">
+    insert into t_tutor (id, user_name, password, 
+      photo, status, last_login, 
+      real_name, gender, phone, 
+      email, qq, curr_distr_id, 
+      curr_addr, birth_city_id, id_card_num, 
+      major, tutor_type, univ_id, 
+      intro, id_card_pic, stu_cert_pic, 
+      teach_cert_pic, pay_account, university, 
+      teach_city_id)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{lastLogin,jdbcType=TIMESTAMP}, 
+      #{realName,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{currDistrId,jdbcType=INTEGER}, 
+      #{currAddr,jdbcType=VARCHAR}, #{birthCityId,jdbcType=INTEGER}, #{idCardNum,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{tutorType,jdbcType=INTEGER}, #{univId,jdbcType=INTEGER}, 
+      #{intro,jdbcType=VARCHAR}, #{idCardPic,jdbcType=VARCHAR}, #{stuCertPic,jdbcType=VARCHAR}, 
+      #{teachCertPic,jdbcType=VARCHAR}, #{payAccount,jdbcType=VARCHAR}, #{university,jdbcType=VARCHAR}, 
+      #{teachCityId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xhtutor.tutor.bean.Tutor">
+    insert into t_tutor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lastLogin != null">
+        last_login,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="currDistrId != null">
+        curr_distr_id,
+      </if>
+      <if test="currAddr != null">
+        curr_addr,
+      </if>
+      <if test="birthCityId != null">
+        birth_city_id,
+      </if>
+      <if test="idCardNum != null">
+        id_card_num,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="tutorType != null">
+        tutor_type,
+      </if>
+      <if test="univId != null">
+        univ_id,
+      </if>
+      <if test="intro != null">
+        intro,
+      </if>
+      <if test="idCardPic != null">
+        id_card_pic,
+      </if>
+      <if test="stuCertPic != null">
+        stu_cert_pic,
+      </if>
+      <if test="teachCertPic != null">
+        teach_cert_pic,
+      </if>
+      <if test="payAccount != null">
+        pay_account,
+      </if>
+      <if test="university != null">
+        university,
+      </if>
+      <if test="teachCityId != null">
+        teach_city_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="currDistrId != null">
+        #{currDistrId,jdbcType=INTEGER},
+      </if>
+      <if test="currAddr != null">
+        #{currAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthCityId != null">
+        #{birthCityId,jdbcType=INTEGER},
+      </if>
+      <if test="idCardNum != null">
+        #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="tutorType != null">
+        #{tutorType,jdbcType=INTEGER},
+      </if>
+      <if test="univId != null">
+        #{univId,jdbcType=INTEGER},
+      </if>
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPic != null">
+        #{idCardPic,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCertPic != null">
+        #{stuCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="teachCertPic != null">
+        #{teachCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null">
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="university != null">
+        #{university,jdbcType=VARCHAR},
+      </if>
+      <if test="teachCityId != null">
+        #{teachCityId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xhtutor.tutor.bean.TutorExample" resultType="java.lang.Long">
+    select count(*) from t_tutor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_tutor
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null">
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastLogin != null">
+        last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.realName != null">
+        real_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null">
+        gender = #{record.gender,jdbcType=CHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null">
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currDistrId != null">
+        curr_distr_id = #{record.currDistrId,jdbcType=INTEGER},
+      </if>
+      <if test="record.currAddr != null">
+        curr_addr = #{record.currAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthCityId != null">
+        birth_city_id = #{record.birthCityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.idCardNum != null">
+        id_card_num = #{record.idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.major != null">
+        major = #{record.major,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tutorType != null">
+        tutor_type = #{record.tutorType,jdbcType=INTEGER},
+      </if>
+      <if test="record.univId != null">
+        univ_id = #{record.univId,jdbcType=INTEGER},
+      </if>
+      <if test="record.intro != null">
+        intro = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardPic != null">
+        id_card_pic = #{record.idCardPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuCertPic != null">
+        stu_cert_pic = #{record.stuCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teachCertPic != null">
+        teach_cert_pic = #{record.teachCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payAccount != null">
+        pay_account = #{record.payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.university != null">
+        university = #{record.university,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teachCityId != null">
+        teach_city_id = #{record.teachCityId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_tutor
+    set id = #{record.id,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+      real_name = #{record.realName,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=CHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      curr_distr_id = #{record.currDistrId,jdbcType=INTEGER},
+      curr_addr = #{record.currAddr,jdbcType=VARCHAR},
+      birth_city_id = #{record.birthCityId,jdbcType=INTEGER},
+      id_card_num = #{record.idCardNum,jdbcType=VARCHAR},
+      major = #{record.major,jdbcType=VARCHAR},
+      tutor_type = #{record.tutorType,jdbcType=INTEGER},
+      univ_id = #{record.univId,jdbcType=INTEGER},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      id_card_pic = #{record.idCardPic,jdbcType=VARCHAR},
+      stu_cert_pic = #{record.stuCertPic,jdbcType=VARCHAR},
+      teach_cert_pic = #{record.teachCertPic,jdbcType=VARCHAR},
+      pay_account = #{record.payAccount,jdbcType=VARCHAR},
+      university = #{record.university,jdbcType=VARCHAR},
+      teach_city_id = #{record.teachCityId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xhtutor.tutor.bean.Tutor">
+    update t_tutor
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastLogin != null">
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="currDistrId != null">
+        curr_distr_id = #{currDistrId,jdbcType=INTEGER},
+      </if>
+      <if test="currAddr != null">
+        curr_addr = #{currAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthCityId != null">
+        birth_city_id = #{birthCityId,jdbcType=INTEGER},
+      </if>
+      <if test="idCardNum != null">
+        id_card_num = #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="tutorType != null">
+        tutor_type = #{tutorType,jdbcType=INTEGER},
+      </if>
+      <if test="univId != null">
+        univ_id = #{univId,jdbcType=INTEGER},
+      </if>
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPic != null">
+        id_card_pic = #{idCardPic,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCertPic != null">
+        stu_cert_pic = #{stuCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="teachCertPic != null">
+        teach_cert_pic = #{teachCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null">
+        pay_account = #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="university != null">
+        university = #{university,jdbcType=VARCHAR},
+      </if>
+      <if test="teachCityId != null">
+        teach_city_id = #{teachCityId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xhtutor.tutor.bean.Tutor">
+    update t_tutor
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      real_name = #{realName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      curr_distr_id = #{currDistrId,jdbcType=INTEGER},
+      curr_addr = #{currAddr,jdbcType=VARCHAR},
+      birth_city_id = #{birthCityId,jdbcType=INTEGER},
+      id_card_num = #{idCardNum,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      tutor_type = #{tutorType,jdbcType=INTEGER},
+      univ_id = #{univId,jdbcType=INTEGER},
+      intro = #{intro,jdbcType=VARCHAR},
+      id_card_pic = #{idCardPic,jdbcType=VARCHAR},
+      stu_cert_pic = #{stuCertPic,jdbcType=VARCHAR},
+      teach_cert_pic = #{teachCertPic,jdbcType=VARCHAR},
+      pay_account = #{payAccount,jdbcType=VARCHAR},
+      university = #{university,jdbcType=VARCHAR},
+      teach_city_id = #{teachCityId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- 添加的内容 -->
+  <resultMap id="ConditionResultMap" type="com.xhtutor.tutor.bean.Tutor">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="gender" jdbcType="CHAR" property="gender" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="tutor_type" jdbcType="INTEGER" property="tutorType" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="university" jdbcType="VARCHAR" property="university" />
+    <collection property="subjectList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.Subject" >
+    	<id column="subject_id"  jdbcType="INTEGER" property="id" />
+    	<result column="subject_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+    <collection property="gradeList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.Grade" >
+    	<id column="grade_id"  jdbcType="INTEGER" property="id" />
+    	<result column="grade_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+    <collection property="distrList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.District" >
+    	<id column="distr_id"  jdbcType="INTEGER" property="id" />
+    	<result column="distr_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+    <collection property="modeList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.Mode" >
+    	<id column="mode_id"  jdbcType="INTEGER" property="id" />
+    	<result column="mode_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+  </resultMap>
+  <!-- 查询结果没必要这么详细 -->
+<!--   <sql id="Detail_Column_List">
+    t.id id, t.user_name user_name, t.password password, t.photo photo, t.status status, 
+    t.last_login last_login, t.real_name real_name, t.gender gender, t.phone phone, t.email email, 
+    t.qq qq, t.curr_distr_id curr_distr_id, t.curr_addr curr_addr, t.birth_city_id birth_city_id, 
+    t.id_card_num id_card_num, t.major major, t.tutor_type tutor_type, t.univ_id univ_id, 
+    t.intro intro, t.id_card_pic id_card_pic, t.stu_cert_pic stu_cert_pic, t.teach_cert_pic teach_cert_pic, 
+    t.pay_account pay_account, t.university university, 
+  </sql> -->
+  <sql id="Condition_Column_List">
+    t.id id, t.user_name user_name, t.photo photo, t.status status, t.last_login last_login, 
+    t.real_name real_name, t.gender gender, t.major major, t.tutor_type tutor_type, t.intro intro, 
+    t.university university, 
+    ts.subject_id subject_id, s.name subject_name, tg.grade_id grade_id, g.name grade_name, 
+    td.distr_id distr_id, d.name distr_name, tm.mode_id mode_id, m.name mode_name 
+  </sql>
+  <select id="selectByCondition" resultMap="ConditionResultMap">
+  	SELECT 
+    <include refid="Condition_Column_List" />
+    FROM t_tutor t 
+	JOIN t_tutor_subject ts 
+	ON t.id = ts.tutor_id 
+	JOIN t_subject s 
+	ON ts.subject_id = s.id 
+	JOIN t_tutor_grade tg 
+	ON t.id = tg.tutor_id 
+	JOIN t_grade g 
+	ON tg.grade_id = g.id 
+	JOIN t_tutor_distr td 
+	ON t.id = td.tutor_id 
+	JOIN t_district d 
+	ON td.distr_id = d.id 
+	JOIN t_tutor_mode tm 
+	ON t.id = tm.tutor_id 
+	JOIN t_mode m 
+	ON tm.mode_id = m.id 
+    <where>
+      t.id IN (
+      	SELECT ids.id 
+      	FROM (
+			SELECT tt.id 
+			FROM t_tutor tt 
+			   <if test='subjectId != null'>
+			     JOIN t_tutor_subject tts 
+			  ON tt.id = tts.tutor_id 
+			  AND tts.subject_id = #{subjectId, jdbcType=INTEGER} 
+			   </if>
+			<if test='gradeId != null'>
+			  JOIN t_tutor_grade ttg 
+			  ON tt.id = ttg.tutor_id 
+			  AND ttg.grade_id = #{gradeId, jdbcType=INTEGER} 
+			</if>
+			<if test='distrId != null'>
+			  JOIN t_tutor_distr ttd 
+			  ON tt.id = ttd.tutor_id 
+			  AND ttd.distr_id = #{distrId, jdbcType=INTEGER} 
+			</if>
+			<if test='modeId != null'>
+			  JOIN t_tutor_mode ttm 
+			  ON tt.id = ttm.tutor_id 
+			  AND ttm.mode_id = #{modeId, jdbcType=INTEGER} 
+			</if>
+			<where>
+				<if test='gender != null and gender != ""'>
+					tt.gender = #{gender, jdbcType=VARCHAR} 
+				</if>
+				<if test='tutorType != null'>
+					AND tt.tutor_type = #{tutorType, jdbcType=INTEGER} 
+				</if>
+				<if test='teachCityId != null'>
+					AND tt.teach_city_id = #{teachCityId, jdbcType=INTEGER} 
+				</if>
+			</where>
+			ORDER BY tt.last_login DESC 
+			<if test='start != null and num != null'>
+			  LIMIT #{start, jdbcType=INTEGER}, #{num, jdbcType=INTEGER} 
+			</if>
+      	) ids 
+      ) 
+    </where> 
+	ORDER BY t.last_login DESC 
+  </select>
+  
+  <select id="selectDetailByCondition" resultMap="DetailResultMap">
+  	SELECT 
+    <include refid="Detail_Column_List" />
+    FROM t_tutor t 
+	JOIN t_tutor_subject ts 
+	ON t.id = ts.tutor_id 
+	JOIN t_subject s 
+	ON ts.subject_id = s.id 
+	JOIN t_tutor_grade tg 
+	ON t.id = tg.tutor_id 
+	JOIN t_grade g 
+	ON tg.grade_id = g.id 
+	JOIN t_tutor_distr td 
+	ON t.id = td.tutor_id 
+	JOIN t_district d 
+	ON td.distr_id = d.id 
+	JOIN t_tutor_mode tm 
+	ON t.id = tm.tutor_id 
+	JOIN t_mode m 
+	ON tm.mode_id = m.id 
+    <where>
+      t.id IN (
+      	SELECT ids.id 
+      	FROM (
+			SELECT tt.id 
+			FROM t_tutor tt 
+			   <if test='subjectId != null'>
+			     JOIN t_tutor_subject tts 
+			  ON tt.id = tts.tutor_id 
+			  AND tts.subject_id = #{subjectId, jdbcType=INTEGER} 
+			   </if>
+			<if test='gradeId != null'>
+			  JOIN t_tutor_grade ttg 
+			  ON tt.id = ttg.tutor_id 
+			  AND ttg.grade_id = #{gradeId, jdbcType=INTEGER} 
+			</if>
+			<if test='distrId != null'>
+			  JOIN t_tutor_distr ttd 
+			  ON tt.id = ttd.tutor_id 
+			  AND ttd.distr_id = #{distrId, jdbcType=INTEGER} 
+			</if>
+			<if test='modeId != null'>
+			  JOIN t_tutor_mode ttm 
+			  ON tt.id = ttm.tutor_id 
+			  AND ttm.mode_id = #{modeId, jdbcType=INTEGER} 
+			</if>
+			<where>
+				<if test='gender != null and gender != ""'>
+					tt.gender = #{gender, jdbcType=VARCHAR} 
+				</if>
+				<if test='tutorType != null'>
+					AND tt.tutor_type = #{tutorType, jdbcType=INTEGER} 
+				</if>
+				<if test='teachCityId != null'>
+					AND tt.teach_city_id = #{teachCityId, jdbcType=INTEGER} 
+				</if>
+			</where>
+			ORDER BY tt.last_login DESC 
+			<if test='start != null and num != null'>
+			  LIMIT #{start, jdbcType=INTEGER}, #{num, jdbcType=INTEGER} 
+			</if>
+      	) ids 
+      ) 
+    </where> 
+	ORDER BY t.last_login DESC 
+  </select>
+  
+  <resultMap id="DetailResultMap" type="com.xhtutor.tutor.bean.Tutor">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="gender" jdbcType="CHAR" property="gender" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="curr_distr_id" jdbcType="INTEGER" property="currDistrId" />
+    <result column="curr_addr" jdbcType="VARCHAR" property="currAddr" />
+    <result column="birth_city_id" jdbcType="INTEGER" property="birthCityId" />
+    <result column="id_card_num" jdbcType="VARCHAR" property="idCardNum" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="tutor_type" jdbcType="INTEGER" property="tutorType" />
+    <result column="univ_id" jdbcType="INTEGER" property="univId" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="id_card_pic" jdbcType="VARCHAR" property="idCardPic" />
+    <result column="stu_cert_pic" jdbcType="VARCHAR" property="stuCertPic" />
+    <result column="teach_cert_pic" jdbcType="VARCHAR" property="teachCertPic" />
+    <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
+    <result column="university" jdbcType="VARCHAR" property="university" />
+    <result column="teach_city_id" jdbcType="INTEGER" property="teachCityId" />
+    <collection property="subjectList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.Subject" >
+    	<id column="subject_id"  jdbcType="INTEGER" property="id" />
+    	<result column="subject_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+    <collection property="gradeList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.Grade" >
+    	<id column="grade_id"  jdbcType="INTEGER" property="id" />
+    	<result column="grade_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+    <collection property="distrList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.District" >
+    	<id column="distr_id"  jdbcType="INTEGER" property="id" />
+    	<result column="distr_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+    <collection property="modeList" javaType="java.util.ArrayList" ofType="com.xhtutor.tutor.bean.Mode" >
+    	<id column="mode_id"  jdbcType="INTEGER" property="id" />
+    	<result column="mode_name" jdbcType="VARCHAR" property="name"/>
+    </collection>
+  </resultMap>
+  <sql id="Detail_Column_List">
+    t.id id, t.user_name user_name, t.password password, t.photo photo, t.status status, 
+    t.last_login last_login, t.real_name real_name, t.gender gender, t.phone phone, t.email email, 
+    t.qq qq, t.curr_distr_id curr_distr_id, t.curr_addr curr_addr, t.birth_city_id birth_city_id, 
+    t.id_card_num id_card_num, t.major major, t.tutor_type tutor_type, t.univ_id univ_id, 
+    t.intro intro, t.id_card_pic id_card_pic, t.stu_cert_pic stu_cert_pic, t.teach_cert_pic teach_cert_pic, 
+    t.pay_account pay_account, t.university university, t.teach_city_id teach_city_id, 
+    ts.subject_id subject_id, s.name subject_name, tg.grade_id grade_id, g.name grade_name, 
+    td.distr_id distr_id, d.name distr_name, tm.mode_id mode_id, m.name mode_name 
+  </sql>
+  <select id="selectDetailById" resultMap="DetailResultMap">
+  	SELECT 
+    <include refid="Detail_Column_List" />
+    FROM t_tutor t 
+	JOIN t_tutor_subject ts 
+	ON t.id = ts.tutor_id 
+	JOIN t_subject s 
+	ON ts.subject_id = s.id 
+	JOIN t_tutor_grade tg 
+	ON t.id = tg.tutor_id 
+	JOIN t_grade g 
+	ON tg.grade_id = g.id 
+	JOIN t_tutor_distr td 
+	ON t.id = td.tutor_id 
+	JOIN t_district d 
+	ON td.distr_id = d.id 
+	JOIN t_tutor_mode tm 
+	ON t.id = tm.tutor_id 
+	JOIN t_mode m 
+	ON tm.mode_id = m.id 
+    WHERE t.id = #{id,jdbcType=INTEGER} 
+  </select>
+  
+  <insert id="insertAndGetId" useGeneratedKeys="true" keyProperty="id" parameterType="com.xhtutor.tutor.bean.Tutor">
+    insert into t_tutor (id, user_name, password, 
+      photo, status, last_login, 
+      real_name, gender, phone, 
+      email, qq, curr_distr_id, 
+      curr_addr, birth_city_id, id_card_num, 
+      major, tutor_type, univ_id, 
+      intro, id_card_pic, stu_cert_pic, 
+      teach_cert_pic, pay_account, university, 
+      teach_city_id)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{lastLogin,jdbcType=TIMESTAMP}, 
+      #{realName,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{currDistrId,jdbcType=INTEGER}, 
+      #{currAddr,jdbcType=VARCHAR}, #{birthCityId,jdbcType=INTEGER}, #{idCardNum,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{tutorType,jdbcType=INTEGER}, #{univId,jdbcType=INTEGER}, 
+      #{intro,jdbcType=VARCHAR}, #{idCardPic,jdbcType=VARCHAR}, #{stuCertPic,jdbcType=VARCHAR}, 
+      #{teachCertPic,jdbcType=VARCHAR}, #{payAccount,jdbcType=VARCHAR}, #{university,jdbcType=VARCHAR}, 
+      #{teachCityId,jdbcType=INTEGER})
+  </insert>
+  
+  <insert id="insertSelectiveAndGetId" useGeneratedKeys="true" keyProperty="id" parameterType="com.xhtutor.tutor.bean.Tutor">
+    insert into t_tutor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lastLogin != null">
+        last_login,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="currDistrId != null">
+        curr_distr_id,
+      </if>
+      <if test="currAddr != null">
+        curr_addr,
+      </if>
+      <if test="birthCityId != null">
+        birth_city_id,
+      </if>
+      <if test="idCardNum != null">
+        id_card_num,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="tutorType != null">
+        tutor_type,
+      </if>
+      <if test="univId != null">
+        univ_id,
+      </if>
+      <if test="intro != null">
+        intro,
+      </if>
+      <if test="idCardPic != null">
+        id_card_pic,
+      </if>
+      <if test="stuCertPic != null">
+        stu_cert_pic,
+      </if>
+      <if test="teachCertPic != null">
+        teach_cert_pic,
+      </if>
+      <if test="payAccount != null">
+        pay_account,
+      </if>
+      <if test="university != null">
+        university,
+      </if>
+      <if test="teachCityId != null">
+        teach_city_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="currDistrId != null">
+        #{currDistrId,jdbcType=INTEGER},
+      </if>
+      <if test="currAddr != null">
+        #{currAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthCityId != null">
+        #{birthCityId,jdbcType=INTEGER},
+      </if>
+      <if test="idCardNum != null">
+        #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="tutorType != null">
+        #{tutorType,jdbcType=INTEGER},
+      </if>
+      <if test="univId != null">
+        #{univId,jdbcType=INTEGER},
+      </if>
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPic != null">
+        #{idCardPic,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCertPic != null">
+        #{stuCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="teachCertPic != null">
+        #{teachCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null">
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="university != null">
+        #{university,jdbcType=VARCHAR},
+      </if>
+      <if test="teachCityId != null">
+        #{teachCityId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+</mapper>
