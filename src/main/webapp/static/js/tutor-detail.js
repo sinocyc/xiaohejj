@@ -27,7 +27,7 @@ function updateTutorDetailPageById(tutorId) {
 			if(result.code == 1) {
 				var tutor = result.extend.tutor;
 				var photo = tutor.photo ? tutor.photo : 'default-photo.png';
-				var photoUrl = 'http://pub.xhtutor.com/photo/' + photo;
+				var photoUrl = 'https://tutor-public.oss-cn-hangzhou.aliyuncs.com/photo/' + photo;
 				var nameStr = tutor.realName.substring(0, 1) + '教员';
 				var genderStr = tutor.gender == 'm' ? '男' : '女';
 				var tutorTypeName = '';

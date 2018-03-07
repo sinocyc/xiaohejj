@@ -34,7 +34,7 @@ $('#ad2-line2-text').css('margin-top', ($('#ad2-line2-img').height() - $('#ad2-l
 	<div class="row">
 		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 home-tutor-photo">
 			<a href="#">
-		    	<img class="img-responsive img-rounded" src="http://oss.xhtutor.com/static/images/photo200.png" alt="photo">
+		    	<img class="img-responsive img-rounded" src="https://tutor-static.oss-cn-hangzhou.aliyuncs.com/static/images/photo200.png" alt="photo">
 	  		</a>
 	  		<p class="text-center"><strong>崔教员</strong></p>
 		</div>
@@ -83,7 +83,7 @@ function updateTutorListByCity(cityId) {
 									//$('<a></a>').attr('href', '#').append(
 										$('<img/>').attr({
 											'class': 'img-responsive img-rounded tutor-detail',
-											src: 'http://pub.xhtutor.com/photo/' + photo,
+											src: 'https://tutor-public.oss-cn-hangzhou.aliyuncs.com/photo/' + photo,
 											alt: 'photo',
 											tutorId: tutorId
 										})

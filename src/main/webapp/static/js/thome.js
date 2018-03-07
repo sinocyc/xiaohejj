@@ -35,7 +35,7 @@ function loadLoginTutorInfo() {
 				var tutor = result.extend.tutor;
 				// 更新用户名和头像信息
 				var photo = tutor.photo ? tutor.photo : 'default-photo.png';
-				var photoUrl = 'http://pub.xhtutor.com/photo/' + photo;
+				var photoUrl = 'https://tutor-public.oss-cn-hangzhou.aliyuncs.com/photo/' + photo;
 				$('#t-user-name-info').text(tutor.userName);
 				$('#t-user-name-modify').text(tutor.userName);
 				$('#t-photo-info').attr('src', photoUrl);
@@ -621,7 +621,7 @@ function uploadPhotoToAliOss(userName, photoUrlSel) {
 		formData.append('file', file);
 		formData.append('submit', 'Upload to OSS');
 		$.ajax({
-			url: 'http://pub.xhtutor.com/',
+			url: 'https://tutor-public.oss-cn-hangzhou.aliyuncs.com/',
 			type: 'POST',
 			data: formData,
 			processData: false,

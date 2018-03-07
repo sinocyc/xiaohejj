@@ -179,7 +179,7 @@ function updateTutorListByCondition(conditionData) {
 						modeStr = modeStr + modeItem.name + ' / ';
 					});
 					var photo = tutorItem.photo ? tutorItem.photo : 'default-photo.png';
-					var photoUrl = 'http://pub.xhtutor.com/photo/' + photo;
+					var photoUrl = 'https://tutor-public.oss-cn-hangzhou.aliyuncs.com/photo/' + photo;
 					var tutorTypeName = '';
 					switch(tutorItem.tutorType) {
 					case 1:
