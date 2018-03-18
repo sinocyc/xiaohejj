@@ -171,7 +171,7 @@ body {
 }
 /* 首页教员列表中按钮的下外边距，没有photo时控制下边距 */
 #home-tutor-list .tutor-list-btns {
-	margin-bottom: 10px;
+	margin-bottom: 10.5px;
 }
 #home-tutor-list .tutor-list-btns>button {
 	padding: 3px 10px;
