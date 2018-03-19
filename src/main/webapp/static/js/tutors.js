@@ -107,14 +107,14 @@ function updateTutorPagerInfo(pageNum, pageSize) {
 		success: function(result) {
 			if(result.code == 1) {
 				// 下一页有内容
-				$('#admin-tutor-pager li.last-page-hide').show();
+				$('#tutors-tutor-pager li.last-page-hide').show();
 			} else {
 				// 下一页没有内容
-				$('#admin-tutor-pager li.last-page-hide').hide();
+				$('#tutors-tutor-pager li.last-page-hide').hide();
 			}
 		},
 		error: function() {
-			$('#admin-tutor-pager li.last-page-hide').hide();
+			$('#tutors-tutor-pager li.last-page-hide').hide();
 		}
 	});
 }

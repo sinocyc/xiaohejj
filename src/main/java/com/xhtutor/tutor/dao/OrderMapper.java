@@ -39,6 +39,8 @@ public interface OrderMapper {
      */
     List<Order> selectByCondition(Map<String, Object> paramMap);
     
+    List<Order> selectDetailByCondition(Map<String, Object> paramMap);
+    
     List<Order> selectOrderDetailByIds(List<Integer> orderIdList);
     
 }

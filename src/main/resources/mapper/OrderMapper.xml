@@ -440,4 +440,73 @@
 	ORDER BY o.update_time DESC 
   </select>
   
+  <resultMap id="DetailResultMap" type="com.xhtutor.tutor.bean.Order">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="grade_id" jdbcType="INTEGER" property="gradeId" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="distr_id" jdbcType="INTEGER" property="distrId" />
+    <result column="detail_addr" jdbcType="VARCHAR" property="detailAddr" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="stu_id" jdbcType="INTEGER" property="stuId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <association property="subject" javaType="com.xhtutor.tutor.bean.Subject">
+    	<id column="s_id" property="id" />
+    	<result column="s_name" property="name" />
+    </association>
+    <association property="grade" javaType="com.xhtutor.tutor.bean.Grade">
+    	<id column="g_id" property="id" />
+    	<result column="g_name" property="name" />
+    </association>
+    <association property="district" javaType="com.xhtutor.tutor.bean.District">
+    	<id column="d_id" property="id" />
+    	<result column="d_name" property="name" />
+    </association>
+    <association property="city" javaType="com.xhtutor.tutor.bean.City">
+    	<id column="c_id" property="id" />
+    	<result column="c_name" property="name" />
+    </association>
+  </resultMap>
+  <sql id="Detail_Column_List">
+    o.id, o.code, o.subject_id, o.grade_id, o.contact_name, o.phone, o.distr_id, o.detail_addr, o.message, 
+    o.price, o.status, o.stu_id, o.update_time, o.city_id, 
+    s.id s_id, s.name s_name, g.id g_id, g.name g_name, d.id d_id, d.name d_name, c.id c_id, c.name c_name 
+  </sql>
+  <select id="selectDetailByCondition" resultMap="DetailResultMap">
+  	SELECT 
+  	<include refid="Detail_Column_List"></include>
+  	FROM t_order o 
+	JOIN t_subject s 
+	ON o.subject_id = s.id 
+	JOIN t_grade g 
+	ON o.grade_id = g.id 
+	JOIN t_district d 
+	ON o.distr_id = d.id 
+	JOIN t_city c 
+	ON o.city_id = c.id 
+	<where>
+		<if test="subjectId != null">
+			o.subject_id = #{subjectId, jdbcType=INTEGER} 
+		</if>
+		<if test="gradeId != null">
+			AND o.grade_id = #{gradeId, jdbcType=INTEGER} 
+		</if>
+		<if test="distrId != null">
+			AND o.distr_id = #{distrId, jdbcType=INTEGER} 
+		</if>
+		<if test="cityId != null">
+			AND o.city_id = #{cityId, jdbcType=INTEGER} 
+		</if>
+	</where>
+	ORDER BY o.update_time DESC 
+	<if test='start != null and num != null'>
+	  LIMIT #{start, jdbcType=INTEGER}, #{num, jdbcType=INTEGER} 
+	</if>
+  </select>
+  
 </mapper>

@@ -58,6 +58,21 @@ public class OrderController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/order/getOrdersDetailByCondition")
+	public Msg getOrdersDetailByCondition(Integer subjectId, Integer gradeId, 
+			Integer distrId, Integer cityId, Integer start, Integer num) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("subjectId", subjectId);
+		paramMap.put("gradeId", gradeId);
+		paramMap.put("distrId", distrId);
+		paramMap.put("cityId", cityId);
+		paramMap.put("start", start);
+		paramMap.put("num", num);
+		List<Order> orderList = orderService.getOrdersDetailByCondition(paramMap);
+		return Msg.success().add("orderList", orderList);
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/order/orderPageHasContent")
 	public Msg isOrderLastPage(Integer subjectId, Integer gradeId, 
 			Integer distrId, Integer cityId, Integer start, Integer num) {

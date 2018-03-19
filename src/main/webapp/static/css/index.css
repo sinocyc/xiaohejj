@@ -989,7 +989,71 @@ body {
 #admin-tutor-pager li.disabled span:hover {
 	cursor: default;
 }
-
+/* admin页面左边导航按钮样式 */
+#admin-leftnav {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+	background-color: #eee;
+}
+/* admin页面主题内容与slogan的间距 */
+#admin-main-content {
+	margin-top: 15px;
+}
+/* 管理员页面中学员筛选条件样式 */
+#admin-student-filters {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#admin-student-filters>div {
+	font-size: 14px;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #EDF1F2;
+}
+#admin-student-filters>div>div {
+	padding-left: 0;
+	padding-right: 0;
+}
+#admin-student-filters>div>div>ul>li {
+	padding: 2px 4px;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	border-radius: 5%;
+}
+#admin-student-filters>div>div>ul>li.active {
+	color: #fff;
+	background-color: #337AB7;
+}
+#admin-student-filters>div>div>p {
+	padding-top: 2px;
+}
+#admin-student-filters>div>div>ul {
+	margin-bottom: 0;
+}
+#admin-student-filters>div>div>ul>li:hover {
+	cursor: pointer;
+}
+#admin-student-filters>div>div>ul>li:not(.active):hover {
+	color: red;
+}
+/* admin页面订单item间距 */
+.admin-student-item {
+	box-shadow: 0 0 2px 1px #aaa;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+}
+/* admin页面order分页按钮样式 */
+#admin-order-pager li.available span:hover {
+	cursor: pointer;
+}
+#admin-order-pager li.disabled span:hover {
+	cursor: default;
+}
 
 
 

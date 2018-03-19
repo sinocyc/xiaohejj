@@ -15,133 +15,203 @@
 					<h1>管理员界面<small>----小禾家教</small></h1>
 				</div>
 			</div>
-			<div class="before-login">
-				请先以管理员身份登录！
-			</div>
-			<div class="col-sm-2 after-login">
-				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#tutor-manager" data-toggle="tab">教员管理</a></li>
-					<li><a href="#student-manager" data-toggle="tab">学生管理</a></li>
-				</ul>
-			</div>
-			<div class="col-sm-10 after-login">
-				<div class="tab-content">
-					<div class="tab-pane active" id="tutor-manager">
-						<div id="admin-tutor-filters">
-							<div class="row">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-									<p class="text-center text-primary"><strong>科目：</strong></p>
+			<div id="admin-main-content" class="row">
+				<div class="before-login">
+					请先以管理员身份登录！
+				</div>
+				<div id="admin-leftnav" class="col-sm-2 after-login">
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#tutor-manager" data-toggle="tab">教员管理</a></li>
+						<li><a href="#student-manager" data-toggle="tab">学生管理</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-10 after-login">
+					<div class="tab-content">
+						<div class="tab-pane active" id="tutor-manager">
+							<div id="admin-tutor-filters">
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>科目：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-tutors-subject-filter" class="list-inline">
+											<!-- <li class="active">不限</li> -->
+										</ul>
+									</div>
 								</div>
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
-									<ul id="admin-tutors-subject-filter" class="list-inline">
-										<!-- <li class="active">不限</li> -->
-									</ul>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>年级：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-tutors-grade-filter" class="list-inline">
+											<!-- <li class="active">不限</li> -->
+										</ul>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>地区：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-tutors-distr-filter" class="list-inline">
+											<!-- <li class="active">不限</li> -->
+										</ul>
+										<div id="admin-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>方式：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-tutors-mode-filter" class="list-inline">
+											<li class="active" mode-id="">不限</li>
+											<li mode-id="1">老师上门</li>
+											<li mode-id="2">学生上门</li>
+										</ul>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>类型：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-tutors-type-filter" class="list-inline">
+											<li class="active" tutor-type="">不限</li>
+											<li tutor-type='1'>在校大学生</li>
+											<li tutor-type='2'>大学毕业生</li>
+											<li tutor-type='3'>优秀教师</li>
+										</ul>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>性别：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-tutors-gender-filter" class="list-inline">
+											<li class="active" gender="">不限</li>
+											<li gender="m">男</li>
+											<li gender="f">女</li>
+										</ul>
+									</div>
 								</div>
 							</div>
+							<div id="admin-tutors-list-wrap">
+								<!-- <div class="row admin-tutor-item">
+									<div class="col-sm-1 no-padding-r tutor-photo">
+										<a href="#">
+									    	<img class="img-responsive img-rounded center-block" src="https://tutor-static.oss-cn-hangzhou.aliyuncs.com/static/images/default-photo.png" alt="photo">
+								  		</a>
+									</div>
+									<div class="col-sm-11">
+										<span><strong>姓名：</strong>崔益成</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>性别：</strong>男</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>身份：</strong>毕业大学生</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>学校：</strong>长安大学</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>专业：</strong>材料成型及控制工程</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>最近登录：</strong>2017/10/30 15:2:8</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>手机：</strong>15067160750</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>邮箱：</strong>sinocyc@163.com</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>QQ：</strong>895528340</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>身份证：</strong>320981199209102212</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>科目：</strong>数学 英语 数学 英语 数学 英语 数学 英语</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>年级：</strong>三年级 五年级 六年级 三年级 五年级 六年级 三年级 五年级 六年级</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>地区：</strong>京口区 句容市 西湖区 京口区 句容市 西湖区 京口区 句容市 西湖区</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>方式：</strong>教员上门 学生上门</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>自我描述：</strong>毕业于长安大学（211重点大学），本科是工科材料专业。数学和物理成绩一直非常优秀，教学生认真负责，有耐心。</span>
+									</div>
+								</div> -->
+							</div>
+							
+							<!-- 分页 -->
 							<div class="row">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-									<p class="text-center text-primary"><strong>年级：</strong></p>
-								</div>
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
-									<ul id="admin-tutors-grade-filter" class="list-inline">
-										<!-- <li class="active">不限</li> -->
-									</ul>
+								<div class="col-lg-12 text-center">
+									<nav id="admin-tutor-pager" aria-label="Page navigation">
+										<ul class="pagination">
+											<li class="available first-page-hide"><span id="admin-tutors-page-first">首页</span></li>
+											<li class="available first-page-hide"><span id="admin-tutors-page-previous">上一页</span></li>
+											<li class="disabled first-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+											<li class="active"><span id="admin-tutors-page-num"></span></li>
+											<li class="disabled last-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+											<li class="available last-page-hide"><span id="admin-tutors-page-next">下一页</span></li>
+										</ul>
+									</nav>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-									<p class="text-center text-primary"><strong>地区：</strong></p>
-								</div>
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
-									<ul id="admin-tutors-distr-filter" class="list-inline">
-										<!-- <li class="active">不限</li> -->
-									</ul>
-									<div id="admin-tutors-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-									<p class="text-center text-primary"><strong>方式：</strong></p>
-								</div>
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
-									<ul id="admin-tutors-mode-filter" class="list-inline">
-										<li class="active" mode-id="">不限</li>
-										<li mode-id="1">老师上门</li>
-										<li mode-id="2">学生上门</li>
-									</ul>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-									<p class="text-center text-primary"><strong>类型：</strong></p>
-								</div>
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
-									<ul id="admin-tutors-type-filter" class="list-inline">
-										<li class="active" tutor-type="">不限</li>
-										<li tutor-type='1'>在校大学生</li>
-										<li tutor-type='2'>大学毕业生</li>
-										<li tutor-type='3'>优秀教师</li>
-									</ul>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-									<p class="text-center text-primary"><strong>性别：</strong></p>
-								</div>
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
-									<ul id="admin-tutors-gender-filter" class="list-inline">
-										<li class="active" gender="">不限</li>
-										<li gender="m">男</li>
-										<li gender="f">女</li>
-									</ul>
-								</div>
-							</div>
+							
 						</div>
-						<div id="admin-tutors-list-wrap">
-							<!-- <div class="row admin-tutor-item">
-								<div class="col-sm-1 no-padding-r tutor-photo">
-									<a href="#">
-								    	<img class="img-responsive img-rounded center-block" src="https://tutor-static.oss-cn-hangzhou.aliyuncs.com/static/images/default-photo.png" alt="photo">
-							  		</a>
+						<div class="tab-pane" id="student-manager">
+							<div id="admin-student-filters">
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>科目：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-students-subject-filter" class="list-inline">
+											<!-- <li class="active">不限</li> -->
+										</ul>
+									</div>
 								</div>
-								<div class="col-sm-11">
-									<span><strong>姓名：</strong>崔益成</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>性别：</strong>男</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>身份：</strong>毕业大学生</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>学校：</strong>长安大学</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>专业：</strong>材料成型及控制工程</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>最近登录：</strong>2017/10/30 15:2:8</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>手机：</strong>15067160750</span>&nbsp;&nbsp;&nbsp;&nbsp;
-							    	<span><strong>邮箱：</strong>sinocyc@163.com</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>QQ：</strong>895528340</span>&nbsp;&nbsp;&nbsp;&nbsp;
-							    	<span><strong>身份证：</strong>320981199209102212</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<span><strong>科目：</strong>数学 英语 数学 英语 数学 英语 数学 英语</span>&nbsp;&nbsp;&nbsp;&nbsp;
-							    	<span><strong>年级：</strong>三年级 五年级 六年级 三年级 五年级 六年级 三年级 五年级 六年级</span>&nbsp;&nbsp;&nbsp;&nbsp;
-							    	<span><strong>地区：</strong>京口区 句容市 西湖区 京口区 句容市 西湖区 京口区 句容市 西湖区</span>&nbsp;&nbsp;&nbsp;&nbsp;
-							    	<span><strong>方式：</strong>教员上门 学生上门</span>&nbsp;&nbsp;&nbsp;&nbsp;
-							    	<span><strong>自我描述：</strong>毕业于长安大学（211重点大学），本科是工科材料专业。数学和物理成绩一直非常优秀，教学生认真负责，有耐心。</span>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>年级：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-students-grade-filter" class="list-inline">
+											<!-- <li class="active">不限</li> -->
+										</ul>
+									</div>
 								</div>
-							</div> -->
-						</div>
-						
-						<!-- 分页 -->
-						<div class="row">
-							<div class="col-lg-12 text-center">
-								<nav id="admin-tutor-pager" aria-label="Page navigation">
-									<ul class="pagination">
-										<li class="available first-page-hide"><span id="admin-tutors-page-first">首页</span></li>
-										<li class="available first-page-hide"><span id="admin-tutors-page-previous">上一页</span></li>
-										<li class="disabled first-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
-										<li class="active"><span id="admin-tutors-page-num"></span></li>
-										<li class="disabled last-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
-										<li class="available last-page-hide"><span id="admin-tutors-page-next">下一页</span></li>
-									</ul>
-								</nav>
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+										<p class="text-center text-primary"><strong>地区：</strong></p>
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+										<ul id="admin-students-distr-filter" class="list-inline">
+											<!-- <li class="active">不限</li> -->
+										</ul>
+										<div id="admin-city-hint">提示：如果地区与您的城市不匹配，请先在页面上方<a href="#">切换城市</a>。</div>
+									</div>
+								</div>
 							</div>
+							
+							<div id="admin-students-list-wrap">
+								<!-- <div class="row admin-student-item">
+									<div class="col-sm-12">
+										<span><strong>编号：</strong>1511093873</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>科目：</strong>数学</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>年级：</strong>初二</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>联系人：</strong>崔家长</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>电话：</strong>320981199209102212</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>位置：</strong>西安市 未央区 未央区 东元路75号 蔚蓝人家</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>要求：</strong>女老师 有丰富的家教经验 211 985大学在校生 最好是 西安本地人</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>更新时间：</strong>2017/11/19 20:17:53</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><strong>课时费：</strong>50元/小时</span>&nbsp;&nbsp;&nbsp;&nbsp;
+								    	<span><strong>状态：</strong>未预定</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									</div>
+								</div> -->
+							</div>
+							
+							<!-- 分页 -->
+							<div class="row">
+								<div class="col-lg-12 text-center">
+									<nav id="admin-order-pager" aria-label="Page navigation">
+										<ul class="pagination">
+											<li class="available first-page-hide"><span id="admin-orders-page-first">首页</span></li>
+											<li class="available first-page-hide"><span id="admin-orders-page-previous">上一页</span></li>
+											<li class="disabled first-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+											<li class="active"><span id="admin-orders-page-num"></span></li>
+											<li class="disabled last-page-hide"><span><strong>&nbsp;...&nbsp;</strong></span></li>
+											<li class="available last-page-hide"><span id="admin-orders-page-next">下一页</span></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							
 						</div>
-						
 					</div>
-					<div class="tab-pane" id="student-manager">student manager</div>
 				</div>
 			</div>
 		</div>

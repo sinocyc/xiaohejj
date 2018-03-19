@@ -24,6 +24,11 @@ public class OrderService {
 		return orderList;
 	}
 	
+	public List<Order> getOrdersDetailByCondition(Map<String, Object> paramMap) {
+		List<Order> orderList = orderMapper.selectDetailByCondition(paramMap);
+		return orderList;
+	}
+	
 	public List<Order> getOrdersByIds(List<Integer> orderIdList) {
 		List<Order> orderList = orderMapper.selectOrderDetailByIds(orderIdList);
 		return orderList;

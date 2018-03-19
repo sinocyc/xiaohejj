@@ -7,12 +7,16 @@ $(function() {
 	loadSubjectUl('#admin-tutors-subject-filter');
 	loadGradeUl('#admin-tutors-grade-filter');
 	isAdminLogin();
+	//学生filter加载
+	loadSubjectUl('#admin-students-subject-filter');
+	loadGradeUl('#admin-students-grade-filter');
 });
 
 //更新页面中与城市相关的内容,currCity改变时调用
 function updateInfoByCity(cityId, provId) {
 	updateDistrUlByCity(cityId, '#admin-tutors-distr-filter');
-	updateTutorListByCondPage(1, 8);
+	updateDistrUlByCity(cityId, '#admin-students-distr-filter');
+	isAdminLogin();
 }
 
 // 判断是否登录，修改页面内容
@@ -24,6 +28,8 @@ function isAdminLogin() {
 		success: function(result) {
 			if(result.code == 1) {
 				$('.after-login').show();
+				updateTutorListByCondPage(1, 8);
+				updateOrderListByCondPage(1, 8);
 			} else {
 				$('.before-login').show();
 				$('#admin-login-modal').modal('show');
@@ -59,7 +65,7 @@ function adminLogout() {
 	});
 }
 
-//给筛选条件的li绑定点击事件
+//tutor给筛选条件的li绑定点击事件
 $('#admin-tutor-filters').on('click', 'li', function() {
 	$(this).siblings('.active').removeClass('active');
 	$(this).addClass('active');
@@ -72,7 +78,7 @@ function updateTutorListByCondPage(pageNum, pageSize) {
 	updateTutorPagerInfo(pageNum, pageSize);
 }
 
-//给定页码，根据页面筛选条件，生成查询条件数据
+//tutor给定页码，根据页面筛选条件，生成查询条件数据
 function generateTutorConditionData(pageNum, pageSize) {
 	var subjectId = $('#admin-tutors-subject-filter li.active').attr('subject-id');
 	var gradeId = $('#admin-tutors-grade-filter li.active').attr('grade-id');
@@ -224,6 +230,132 @@ $('#admin-tutors-page-next').click(function() {
 	var pageNum = parseInt($('#admin-tutors-page-num').text());
 	if(pageNum) {
 		updateTutorListByCondPage(pageNum + 1, 8);
+	}
+});
+
+//student给筛选条件的li绑定点击事件
+$('#admin-student-filters').on('click', 'li', function() {
+	$(this).siblings('.active').removeClass('active');
+	$(this).addClass('active');
+	updateOrderListByCondPage(1, 8);
+});
+
+function updateOrderListByCondPage(pageNum, pageSize) {
+	var conditionData = generateOrderConditionData(pageNum, pageSize);
+	updateOrderListByCondition(conditionData);
+	updateOrderPagerInfo(pageNum, pageSize);
+}
+
+//student给定页码，根据页面筛选条件，生成查询条件数据
+function generateOrderConditionData(pageNum, pageSize) {
+	var subjectId = $('#admin-students-subject-filter li.active').attr('subject-id');
+	var gradeId = $('#admin-students-grade-filter li.active').attr('grade-id');
+	var distrId = $('#admin-students-distr-filter li.active').attr('distr-id');
+	var teachCityId = $('#current-city').attr('city-id');
+	var start = (pageNum - 1) * pageSize;
+	var num = pageSize;
+	////////////////////暂时不设置teachCityId参数///////////////////////////////////////////////////////////
+	var conditionData = {
+		subjectId: subjectId,
+		gradeId: gradeId,
+		distrId: distrId,
+		teachCityId: teachCityId,
+		start: start,
+		num: num
+	};
+	return conditionData;
+}
+
+function updateOrderListByCondition(conditionData) {
+	$.ajax({
+		url: '/as/order/getOrdersDetailByCondition',
+		type: 'POST',
+		data: conditionData,
+		success: function(result) {
+			if(result.code == 1) {
+				var orderList = result.extend.orderList;
+				$('#admin-students-list-wrap').empty();
+				$.each(orderList, function(orderIndex, orderItem) {
+					var code = orderItem.code;
+					var codeStr = orderItem.code.substring(0, code.length - 3);
+					var subjectName = orderItem.subject.name;
+					var gradeName = orderItem.grade.name;
+					var distrName = orderItem.district.name;
+					var cityName = orderItem.city.name;
+					var address = cityName + ' ' + distrName + ' ' + orderItem.detailAddr;
+					var time = new Date(orderItem.updateTime);
+					var timeStr = time.toLocaleDateString() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+					var priceStr = orderItem.price == null ? '--' : orderItem.price;
+					var statusStr;
+					if(orderItem.status == 2) {
+						statusStr = '已有教员';
+					} else {
+						statusStr = '未分配';
+					}
+					var orderListItemStr = '<div class="row admin-student-item">' +
+								'<div class="col-sm-12">' +
+								'	<span><strong>编号：</strong>' + codeStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>科目：</strong>' + subjectName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>年级：</strong>' + gradeName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>联系人：</strong>' + orderItem.contactName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>电话：</strong>' + orderItem.phone + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>位置：</strong>' + address + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>要求：</strong>' + orderItem.phone + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+							    '	<span><strong>更新时间：</strong>' + timeStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>课时费：</strong>' + priceStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+							    '	<span><strong>状态：</strong>' + statusStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'</div>' +
+							'</div>';
+					$('#admin-students-list-wrap').append(orderListItemStr);
+				});
+			}
+		}
+	});
+}
+
+//更新students列表的pager的显示内容
+function updateOrderPagerInfo(pageNum, pageSize) {
+	$('#admin-orders-page-num').text(pageNum);
+	if(pageNum <= 1) {
+		$('#admin-order-pager li.first-page-hide').hide();
+	} else {
+		$('#admin-order-pager li.first-page-hide').show();
+	}
+	// 验证是否有下一页
+	var conditionData = generateOrderConditionData(pageNum + 1, pageSize);
+	$.ajax({
+		url: '/as/order/orderPageHasContent',
+		type: 'POST',
+		data: conditionData,
+		success: function(result) {
+			if(result.code == 1) {
+				// 下一页有内容
+				$('#admin-order-pager li.last-page-hide').show();
+			} else {
+				// 下一页没有内容
+				$('#admin-order-pager li.last-page-hide').hide();
+			}
+		},
+		error: function() {
+			$('#admin-order-pager li.last-page-hide').hide();
+		}
+	});
+}
+
+//给student pager的按钮绑定事件
+$('#admin-orders-page-first').click(function() {
+	updateOrderListByCondPage(1, 8);
+});
+$('#admin-orders-page-previous').click(function() {
+	var pageNum = parseInt($('#admin-orders-page-num').text());
+	if(pageNum && pageNum > 1) {
+		updateOrderListByCondPage(pageNum - 1, 8);
+	}
+});
+$('#admin-orders-page-next').click(function() {
+	var pageNum = parseInt($('#admin-orders-page-num').text());
+	if(pageNum) {
+		updateOrderListByCondPage(pageNum + 1, 8);
 	}
 });
 
