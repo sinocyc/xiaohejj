@@ -534,4 +534,14 @@ public class TutorController {
 		return Msg.fail().add("message", "登录信息失效，请以教员身份重新登录后操作。");
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/tutor/tutorModifyStatus")
+	public Msg tutorModifyStatus(Tutor tutor) {
+		Integer res = tutorService.modifyByPrimaryKeySelective(tutor);
+		if (res > 0) {
+			return Msg.success().add("message", "修改成功！");
+		}
+		return Msg.fail().add("message", "修改失败！");
+	}
+	
 }

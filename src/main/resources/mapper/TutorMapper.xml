@@ -635,6 +635,7 @@
 			</if>
       	) ids 
       ) 
+      AND t.status != 9 
     </where> 
 	ORDER BY t.last_login DESC 
   </select>

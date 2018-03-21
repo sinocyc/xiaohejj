@@ -156,13 +156,31 @@ function updateTutorListByCondition(conditionData) {
 					var time = new Date(tutorItem.lastLogin);
 					var timeStr = time.toLocaleDateString() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
 					var tutorId = tutorItem.id;
+					var statusStr = '';
+					var btnStr = '';
+					switch(tutorItem.status) {
+					case 1:
+						statusStr = '可接单';
+						btnStr = '	<button tutor-id="' + tutorId + '" class="btn btn-danger btn-sm tutor-hide">隐藏</button>' +
+								'	<button tutor-id="' + tutorId + '" class="btn btn-success btn-sm tutor-show hidden">显示</button>';
+						break;
+					case 9:
+						statusStr = '隐藏';
+						btnStr = '	<button tutor-id="' + tutorId + '" class="btn btn-danger btn-sm tutor-hide hidden">隐藏</button>' +
+						'	<button tutor-id="' + tutorId + '" class="btn btn-success btn-sm tutor-show">显示</button>';
+						break;
+					default:
+						statusStr = '--';
+						btnStr = '	<button tutor-id="' + tutorId + '" class="btn btn-danger btn-sm tutor-hide">隐藏</button>' +
+						'	<button tutor-id="' + tutorId + '" class="btn btn-success btn-sm tutor-show hidden">显示</button>';
+					}
 					var tutorListItemStr = '<div class="row admin-tutor-item">' +
 								'<div class="col-sm-1 no-padding-r tutor-photo">' +
 								'	<a href="#">' +
 								'    	<img class="img-responsive img-rounded center-block" src="' + photoUrl + '" alt="photo">' +
 							  	'	</a>' +
 								'</div>' +
-								'<div class="col-sm-11">' +
+								'<div class="col-sm-10">' +
 								'	<span><strong>姓名：</strong>' + nameStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>性别：</strong>' + genderName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>身份：</strong>' + tutorTypeName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
@@ -177,7 +195,11 @@ function updateTutorListByCondition(conditionData) {
 							    '	<span><strong>年级：</strong>' + gradeStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 							    '	<span><strong>地区：</strong>' + distrStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 							    '	<span><strong>方式：</strong>' + modeStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
-							    '	<span><strong>自我描述：</strong>' + tutorItem.intro + '</span>' +
+							    '	<span><strong>自我描述：</strong>' + tutorItem.intro + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+							    '	<span><strong>状态：</strong>' + statusStr + '</span>' +
+								'</div>' +
+								'<div class="col-sm-1">' +
+								btnStr +
 								'</div>' +
 							'</div>';
 					$('#admin-tutors-list-wrap').append(tutorListItemStr);
@@ -286,24 +308,33 @@ function updateOrderListByCondition(conditionData) {
 					var time = new Date(orderItem.updateTime);
 					var timeStr = time.toLocaleDateString() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
 					var priceStr = orderItem.price == null ? '--' : orderItem.price;
-					var statusStr;
+					var orderId = orderItem.id;
+					var statusStr = '';
+					var btnStr = '';
 					if(orderItem.status == 2) {
 						statusStr = '已有教员';
+						btnStr = '	<button tutor-id="' + orderId + '" class="btn btn-success btn-sm order-assign hidden">分配</button>' +
+						'	<button tutor-id="' + orderId + '" class="btn btn-danger btn-sm order-assign-cancel">取消分配</button>';
 					} else {
 						statusStr = '未分配';
+						btnStr = '	<button tutor-id="' + orderId + '" class="btn btn-success btn-sm order-assign">分配</button>' +
+								'	<button tutor-id="' + orderId + '" class="btn btn-danger btn-sm order-assign-cancel hidden">取消</button>';
 					}
 					var orderListItemStr = '<div class="row admin-student-item">' +
-								'<div class="col-sm-12">' +
+								'<div class="col-sm-11">' +
 								'	<span><strong>编号：</strong>' + codeStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>科目：</strong>' + subjectName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>年级：</strong>' + gradeName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>联系人：</strong>' + orderItem.contactName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>电话：</strong>' + orderItem.phone + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>位置：</strong>' + address + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
-								'	<span><strong>要求：</strong>' + orderItem.phone + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'	<span><strong>要求：</strong>' + orderItem.message + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 							    '	<span><strong>更新时间：</strong>' + timeStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 								'	<span><strong>课时费：</strong>' + priceStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
 							    '	<span><strong>状态：</strong>' + statusStr + '</span>&nbsp;&nbsp;&nbsp;&nbsp;' +
+								'</div>' +
+								'<div class="col-sm-1">' +
+								btnStr +
 								'</div>' +
 							'</div>';
 					$('#admin-students-list-wrap').append(orderListItemStr);
@@ -436,6 +467,46 @@ function checkAdminLoginUname(selector) {
 		$ele.nextAll('.glyphicon-ok').show();
 	}
 }
+
+// 教员隐藏/显示按钮点击事件
+$('#admin-tutors-list-wrap').on('click', '.tutor-hide', function() {
+	var tutorId = $(this).attr('tutor-id');
+	tutorModifyStatus(tutorId, 9);
+	$(this).addClass('hidden');
+	$(this).siblings('.tutor-show').removeClass('hidden');
+});
+$('#admin-tutors-list-wrap').on('click', '.tutor-show', function() {
+	var tutorId = $(this).attr('tutor-id');
+	tutorModifyStatus(tutorId, 1);
+	$(this).addClass('hidden');
+	$(this).siblings('.tutor-hide').removeClass('hidden');
+});
+
+function tutorModifyStatus(tutorId, status) {
+	$.ajax({
+		url: '/as/tutor/tutorModifyStatus',
+		type: 'POST',
+		data: {id: tutorId, status: status},
+		success: function(result) {
+			if(result.code == 1) {
+				var pageNum = parseInt($('#admin-tutors-page-num').text());
+				if(pageNum) {
+					updateTutorListByCondPage(pageNum, 8);
+				}
+			}
+		}
+	});
+}
+
+// order分配/取消分配按钮点击事件
+$('#admin-students-list-wrap').on('click', '.order-assign', function() {
+	$(this).addClass('hidden');
+	$(this).siblings('.order-assign-cancel').removeClass('hidden');
+});
+$('#admin-students-list-wrap').on('click', '.order-assign-cancel', function() {
+	$(this).addClass('hidden');
+	$(this).siblings('.order-assign').removeClass('hidden');
+});
 
 
 

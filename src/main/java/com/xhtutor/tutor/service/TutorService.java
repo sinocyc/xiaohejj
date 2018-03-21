@@ -71,8 +71,8 @@ public class TutorService {
 		return tutor;
 	}
 	
-	public void modifyByPrimaryKeySelective(Tutor tutor) {
-		tutorMapper.updateByPrimaryKeySelective(tutor);
+	public Integer modifyByPrimaryKeySelective(Tutor tutor) {
+		return tutorMapper.updateByPrimaryKeySelective(tutor);
 	}
 	
 	public Tutor getTutorById(Integer tutorId) {
